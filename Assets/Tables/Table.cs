@@ -27,18 +27,10 @@ public class Table : MonoBehaviour
         {
             mIsDirty = false;
             justCleaned = false;
-        }
+            anim.ResetTrigger("justCleaned");
+            anim.SetBool("isDirty", mIsDirty);
 
-        if (!mIsDirty)
-        {
-            var randomPoint = Random.value;
-            if (randomPoint > 0.1f)
-            {
-                Debug.Log("infected");
-                infect();
-            }
         }
-        anim.SetBool("isDirty", mIsDirty);
 
     }
 
@@ -50,9 +42,6 @@ public class Table : MonoBehaviour
     }
     public void CleanTable()
     {
-        Debug.Log("BEEP");
-        Debug.Log(mIsDirty? "Dirty!!!": "Already clean!");
-
         if (mIsDirty)
         {
             justCleaned = true;
