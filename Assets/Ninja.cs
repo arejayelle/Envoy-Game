@@ -7,7 +7,7 @@ public class Ninja : MonoBehaviour
     [SerializeField] private float mJumpForce;
     [SerializeField] private LayerMask mWhatIsGround;
 
-    private float kGroundCheckRadius = 0.7f;
+    private float kGroundCheckRadius = 0.1f;
 
     // Booleans used to coordinate with the animator's state machine
     private bool mMoving;
