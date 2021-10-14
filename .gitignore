@@ -61,3 +61,12 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/.idea.My project.iml
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea/
