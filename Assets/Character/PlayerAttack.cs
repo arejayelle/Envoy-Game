@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator mAnimator;
 
     private float cooldownTime;
-    private float kWipeAttackCooldown = 0.3f;
+    private float kWipeAttackCooldown = 0.03f;
 
     public Transform attackPos;
     public float attackRange;
@@ -18,7 +18,8 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        mAnimator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -33,7 +34,8 @@ public class PlayerAttack : MonoBehaviour
                 Collider2D[] TablesToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsTables);
                 for (int i = 0; i < TablesToWipe.Length; i++)
                 {
-                    TablesToWipe[i].GetComponent<Table>().cleanTable();
+                    var table = TablesToWipe[i].GetComponent<Table>();
+                    table.CleanTable();
                 }
                 
                 mAnimator.SetTrigger("WipeAttack");
