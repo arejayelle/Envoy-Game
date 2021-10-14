@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator mAnimator;
 
     private float cooldownTime;
-    private float kWipeAttackCooldown;
+    private float kWipeAttackCooldown = 0.3f;
 
     public Transform attackPos;
     public float attackRange;
@@ -28,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
             var isAttacking = Input.GetButton("Fire1");
             if (isAttacking)
             {
+                // Collider2D[] TablesToWipe = Physics2D.OverlapBox(attackPos.position, attackPos.localScale, 0f);
                 Collider2D[] TablesToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsTables);
                 for (int i = 0; i < TablesToWipe.Length; i++)
                 {
@@ -36,7 +38,20 @@ public class PlayerAttack : MonoBehaviour
                 
                 mAnimator.SetTrigger("WipeAttack");
             }
+
+            cooldownTime = kWipeAttackCooldown;
+        }
+        else
+        {
+            cooldownTime -= Time.deltaTime;
         }
 
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+        // Gizmos.DrawWireCube(attackPos.position, attackPos.localScale);
     }
 }
