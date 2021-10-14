@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 164107987034441255}
   - component: {fileID: 7737389574544105126}
   - component: {fileID: -4237189214658270459}
+  - component: {fileID: 8820053733722849881}
   m_Layer: 0
   m_Name: OneWayFloorTile
   m_TagString: Untagged
@@ -78,6 +79,18 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &8820053733722849881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2900746366737866511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca33a8bef45e74348823a8998d8e2d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4085654101561657946
 GameObject:
   m_ObjectHideFlags: 0
