@@ -1,42 +1,61 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Table : MonoBehaviour
 {
     
-    private bool isDirty = false;
+    private bool mIsDirty = true;
+    private bool justCleaned = false;
 
-    [SerializeField] private Animator anim;
+    private Animator anim;
     public GameObject bloodEffect;
     
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        anim.SetBool("isDirty", isDirty);
+        anim.SetBool("isDirty", mIsDirty);
     }
 
     // Update is called once per frame
     void Update()
     {
-        anim.ResetTrigger("justCleaned");
+        if (justCleaned)
+        {
+            mIsDirty = false;
+            justCleaned = false;
+        }
+
+        if (!mIsDirty)
+        {
+            var randomPoint = Random.value;
+            if (randomPoint > 0.1f)
+            {
+                Debug.Log("infected");
+                infect();
+            }
+        }
+        anim.SetBool("isDirty", mIsDirty);
+
     }
 
     public void infect()
     {
-        isDirty = true;
-        anim.SetBool("isDirty", isDirty);
+        mIsDirty = true;
+        anim.SetBool("isDirty", mIsDirty);
 
     }
-    public void cleanTable()
+    public void CleanTable()
     {
-        Debug.Log(isDirty? "Dirty!!!": "Already clean!");
+        Debug.Log("BEEP");
+        Debug.Log(mIsDirty? "Dirty!!!": "Already clean!");
 
-        if (isDirty)
+        if (mIsDirty)
         {
-            isDirty = false;
-            anim.SetBool("isDirty", isDirty);
+            justCleaned = true;
             anim.SetTrigger("justCleaned");
         }
         
