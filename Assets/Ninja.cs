@@ -3,15 +3,13 @@ using UnityEngine;
 public class Ninja : MonoBehaviour
 {
     // Variables set in the inspector
-    [SerializeField] private float mWalkSpeed;
     [SerializeField] private float mRunSpeed;
     [SerializeField] private float mJumpForce;
     [SerializeField] private LayerMask mWhatIsGround;
 
-    private float kGroundCheckRadius = 0.1f;
+    private float kGroundCheckRadius = 0.7f;
 
     // Booleans used to coordinate with the animator's state machine
-    private bool mRunning;
     private bool mMoving;
     private bool mGrounded;
     private bool mFalling;
@@ -42,8 +40,7 @@ public class Ninja : MonoBehaviour
         UpdateFalling();
         UpdateAttack();
         // TODO: Update animator's variables
-        mAnimator.SetBool("isMoving", mMoving);
-        mAnimator.SetBool("isRunning", mRunning);
+        mAnimator.SetBool("isRunning", mMoving);
         mAnimator.SetBool("isFalling", mFalling);
         mAnimator.SetBool("isGrounded", mGrounded);
 
@@ -52,6 +49,7 @@ public class Ninja : MonoBehaviour
     private void ResetTriggers()
     {
         mAnimator.ResetTrigger("WipeAttack");
+        mAnimator.ResetTrigger("Jump");
     }
 
     // Lab 3
@@ -71,20 +69,17 @@ public class Ninja : MonoBehaviour
     // Lab 3
     private void MoveCharacter()
     {
-        // Run is [Left Shift]
-        mRunning = Input.GetButton("Run");
-
         float horizontal = Input.GetAxis("Horizontal");
         mMoving = !Mathf.Approximately(horizontal, 0f);
         if (mMoving)
         {
-            transform.Translate(horizontal * (mRunning ? mRunSpeed : mWalkSpeed) * Time.deltaTime, 0, 0);
+            transform.Translate(horizontal * mRunSpeed * Time.deltaTime, 0, 0);
             FaceDirection(horizontal < 0f ? Vector2.left : Vector2.right);
         }
 
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("JUMP");
+            mAnimator.SetTrigger("Jump");
             mRigidBody2D.AddForce(new Vector2(0, mJumpForce), ForceMode2D.Impulse);
         }
     }
