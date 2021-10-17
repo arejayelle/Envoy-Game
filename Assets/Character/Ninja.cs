@@ -38,7 +38,6 @@ public class Ninja : MonoBehaviour
         UpdateGrounded();
         MoveCharacter();
         UpdateFalling();
-        UpdateAttack();
         // TODO: Update animator's variables
         mAnimator.SetBool("isRunning", mMoving);
         mAnimator.SetBool("isFalling", mFalling);
@@ -93,14 +92,5 @@ public class Ninja : MonoBehaviour
     {
         // Flip the sprite
         mSpriteRenderer.flipX = direction == Vector2.right ? false : true;
-    }
-
-    private void UpdateAttack()
-    {
-        var isAttacking = Input.GetButton("Fire1");
-        if (isAttacking)
-        {
-            mAnimator.SetTrigger("WipeAttack");
-        }
     }
 }
