@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Table : MonoBehaviour
+public class Table : MonoBehaviour, IWipeable
 {
     
     private bool mIsDirty = true;
@@ -40,7 +41,7 @@ public class Table : MonoBehaviour
         anim.SetBool("isDirty", mIsDirty);
 
     }
-    public void CleanTable()
+    public void Wipe()
     {
         if (mIsDirty)
         {
