@@ -93,6 +93,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IC Masked
       objectReference: {fileID: 0}
+    - target: {fileID: 3298094197412592596, guid: 89596fac13c47b34e85a986d724fa117, type: 3}
+      propertyPath: m_TagString
+      value: MaskedEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6527755895833746153, guid: 89596fac13c47b34e85a986d724fa117, type: 3}
       propertyPath: m_RootOrder
       value: 3
