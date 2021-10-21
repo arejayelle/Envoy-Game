@@ -35,7 +35,7 @@ public class OneWayPlatform : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Jump"))
             effector.rotationalOffset = 0;
     }
 }

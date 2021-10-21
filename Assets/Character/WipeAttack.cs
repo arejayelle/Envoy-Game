@@ -29,7 +29,7 @@ public class WipeAttack : MonoBehaviour
     {
         if (cooldownTime <= 0)
         {
-            var isAttacking = Input.GetButton("Fire3");
+            var isAttacking = Input.GetButton("Fire1");
             if (isAttacking)
             {
                 // Collider2D[] TablesToWipe = Physics2D.OverlapBox(attackPos.position, attackPos.localScale, 0f);

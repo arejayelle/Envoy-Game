@@ -76,7 +76,7 @@ public class Ninja : MonoBehaviour
             FaceDirection(horizontal < 0f ? Vector2.left : Vector2.right);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Jump"))
         {
             mAnimator.SetTrigger("Jump");
             mRigidBody2D.AddForce(new Vector2(0, mJumpForce), ForceMode2D.Impulse);
