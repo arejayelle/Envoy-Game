@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class PlayerAttack : MonoBehaviour
+public class WipeAttack : MonoBehaviour
 {
     
     private Animator mAnimator;
@@ -14,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPos;
     public float attackRange;
 
-    public LayerMask whatIsTables;
+    public LayerMask whatToWipe;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +33,11 @@ public class PlayerAttack : MonoBehaviour
             if (isAttacking)
             {
                 // Collider2D[] TablesToWipe = Physics2D.OverlapBox(attackPos.position, attackPos.localScale, 0f);
-                Collider2D[] TablesToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsTables);
-                for (int i = 0; i < TablesToWipe.Length; i++)
+                Collider2D[] thingsToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatToWipe);
+                for (int i = 0; i < thingsToWipe.Length; i++)
                 {
-                    var table = TablesToWipe[i].GetComponent<Table>();
-                    table.CleanTable();
+                    var wipeable = thingsToWipe[i].GetComponent<IWipeable>();
+                    wipeable.Wipe();
                 }
                 
                 mAnimator.SetTrigger("WipeAttack");

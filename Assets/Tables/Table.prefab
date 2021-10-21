@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4898370270513458655}
   - component: {fileID: 3132771605788261131}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: TableSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4002051795562719297}
   - component: {fileID: 30654414080960512}
   - component: {fileID: 6060360030773020120}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
