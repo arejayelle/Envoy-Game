@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -44,7 +44,7 @@ public class EnemyLogic : Infectable
         }
 
 // mask behaviours
-        public bool maskUp()
+        public void maskUp()
         {
             if (!isMasked)
             {
@@ -52,12 +52,12 @@ public class EnemyLogic : Infectable
                 mask.SetActive(true);
                 immunity += maskEffect;
                 infectionStrength = 5;
+                infectionRange = 0.5f;
                 Debug.Log("Masking!");
-                return true;
+                return;
             }
 
             Debug.Log("Already masked");
-            return false;
         }
         
     }
