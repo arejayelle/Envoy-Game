@@ -71,5 +71,9 @@ PrefabInstance:
       propertyPath: immunity
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8908778895913865843, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+      propertyPath: infectionStrength
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}

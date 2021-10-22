@@ -290,7 +290,8 @@ MonoBehaviour:
   isMasked: 0
   mask: {fileID: 5893424754558546911}
   maskEffect: 20
-  mSpriteRenderer: {fileID: 731968204574990728}
+  bodySpriteRenderer: {fileID: 731968204574990728}
+  isImmunocompromised: 0
 --- !u!58 &6275948368864454591
 CircleCollider2D:
   m_ObjectHideFlags: 0
