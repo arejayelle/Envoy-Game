@@ -35,8 +35,13 @@ public class WipeAttack : MonoBehaviour
                 Collider2D[] thingsToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatToWipe);
                 for (int i = 0; i < thingsToWipe.Length; i++)
                 {
-                    var wipeable = thingsToWipe[i].GetComponent<IWipeable>();
-                    wipeable.Wipe();
+                    var thing = thingsToWipe[i];
+                    if (thing.CompareTag("wipeable"))
+                    {
+                        var wipeable = thing.GetComponent<IWipeable>();
+                        wipeable.Wipe();
+                    }
+
                 }
                 
                 mAnimator.SetTrigger("wipe");
