@@ -1,21 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3066660277305879685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244426562174852395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6913abcdafb1eb746a6631813bf6ccd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  distance: 2
-  GroundDetection: {fileID: 6904130728723748492}
---- !u!1001 &8811433387062499040
+--- !u!1001 &6158028349184615208
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -24,23 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 731968204574990728, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
       propertyPath: m_Color.b
-      value: 0.033383638
+      value: 0.26250717
       objectReference: {fileID: 0}
     - target: {fileID: 731968204574990728, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.22014059
       objectReference: {fileID: 0}
     - target: {fileID: 731968204574990728, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
       propertyPath: m_Color.r
-      value: 0.9137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 1879898879145551484, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2708943395770892396, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
+      value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 2786487824148659541, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
       propertyPath: m_RootOrder
@@ -86,35 +63,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6308787480815299892, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800726984008817692, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800726984008817692, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8731388218000968651, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
       propertyPath: m_Name
       value: IC
       objectReference: {fileID: 0}
-    - target: {fileID: 8731388218000968651, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
+    - target: {fileID: 8908778895913865843, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+      propertyPath: immunity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908778895913865843, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+      propertyPath: infectionStrength
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
---- !u!1 &244426562174852395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8731388218000968651, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-  m_PrefabInstance: {fileID: 8811433387062499040}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6904130728723748492 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2708943395770892396, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-  m_PrefabInstance: {fileID: 8811433387062499040}
-  m_PrefabAsset: {fileID: 0}
