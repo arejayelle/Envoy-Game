@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,34 +6,45 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     public float speed;
-    public float distance;
     public float lifeTime;
-    public LayerMask whatIsSolid;
+
+    public Rigidbody2D rb;
+    public float doubleRange;
+    public LayerMask whatToMask;
+
 
     public GameObject destroyEffect;
     // Start is called before the first frame update
     void Start()
     {
+        rb.velocity = transform.right * speed;
         Invoke("DestroyProjectile", lifeTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.forward, distance, whatIsSolid);
-        if (hitInfo.collider != null)
+        if (hitInfo.CompareTag("Enemy"))
         {
-            if (hitInfo.collider.CompareTag("Enemy"))
+            var beep = hitInfo.transform;
+            Collider2D[] doubleUp = Physics2D.OverlapCircleAll(hitInfo.transform.position, doubleRange, whatToMask);
+
+            
+            for (int i = 0; i < doubleUp.Length ; i++)
             {
-                onHit(hitInfo.collider.GetComponent<EnemyLogic>());
+                var thing = doubleUp[i];
+                if (thing.CompareTag("Enemy"))
+                {
+                    OnHit(thing.GetComponent<EnemyLogic>());
+                }
             }
+
+            OnHit(hitInfo.GetComponent<EnemyLogic>());
             DestroyProjectile();
         }
-        
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
-    protected abstract void onHit(EnemyLogic enemy);
+    protected abstract void OnHit(EnemyLogic enemy);
+    
     void DestroyProjectile()
     {
         // Instantiate(destroyEffect, transform.position, Quaternion.identity);
