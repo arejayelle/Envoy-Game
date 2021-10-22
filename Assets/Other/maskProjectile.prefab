@@ -100,5 +100,5 @@ MonoBehaviour:
   lifeTime: 1
   whatIsSolid:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   destroyEffect: {fileID: 0}
