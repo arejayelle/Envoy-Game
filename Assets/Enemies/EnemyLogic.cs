@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,8 +8,7 @@ public class EnemyLogic : Infectable
         public GameObject mask;
         public int maskEffect = 20;
         
-        public SpriteRenderer mSpriteRenderer;
-        private static readonly int animInfected = Animator.StringToHash("isInfected");
+        public SpriteRenderer bodySpriteRenderer;
 
         public bool isImmunocompromised = false;
         
@@ -35,12 +34,12 @@ public class EnemyLogic : Infectable
                 return;
             }
                 
-            mSpriteRenderer.color = Color.green;
+            bodySpriteRenderer.color = Color.green;
         }
 
         private void die()
         {
-            mSpriteRenderer.color = Color.black;
+            bodySpriteRenderer.color = Color.black;
             // disable script
         }
 

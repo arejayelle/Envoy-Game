@@ -75,5 +75,18 @@ PrefabInstance:
       propertyPath: isInfected
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8908778895913865843, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+      propertyPath: infectionRange
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908778895913865843, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+      propertyPath: bodySpriteRenderer
+      value: 
+      objectReference: {fileID: 8608618239871104404}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+--- !u!212 &8608618239871104404 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 731968204574990728, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+  m_PrefabInstance: {fileID: 9034095069940257820}
+  m_PrefabAsset: {fileID: 0}
