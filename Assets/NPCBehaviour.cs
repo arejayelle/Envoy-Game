@@ -29,4 +29,9 @@ public class NPCBehaviour : MonoBehaviour
             }
         }
     }
+
+    public void Die()
+    {
+        enabled = false;
+    }
 }
