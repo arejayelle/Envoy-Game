@@ -2,7 +2,7 @@
 
     public class MaskProjectile : Projectile
     {
-        protected override void onHit(EnemyLogic enemy)
+        protected override void OnHit(EnemyLogic enemy)
         {
             enemy.maskUp();
         }
