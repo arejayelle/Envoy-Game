@@ -10,6 +10,8 @@ public class EnemyLogic : Infectable
         
         public SpriteRenderer mSpriteRenderer;
         private static readonly int animInfected = Animator.StringToHash("isInfected");
+
+        public bool isImmunocompromised = false;
         
         protected virtual void Start()
         {
@@ -27,7 +29,19 @@ public class EnemyLogic : Infectable
         // Infection behaviours
         protected override void handleInfection()
         {
+            if (isImmunocompromised)
+            {
+                die();
+                return;
+            }
+                
             mSpriteRenderer.color = Color.green;
+        }
+
+        private void die()
+        {
+            mSpriteRenderer.color = Color.black;
+            // disable script
         }
 
 // mask behaviours
