@@ -1,20 +1,44 @@
 ﻿using System;
 using UnityEngine;
-public class EnemyLogic : MonoBehaviour
+using Random = UnityEngine.Random;
+
+public class EnemyLogic : Infectable
     {
         public bool isMasked;
-        public float infectionChance = 90f;
-        private void Update()
+        public GameObject mask;
+        public int maskEffect = 20;
+        
+        public SpriteRenderer mSpriteRenderer;
+        private static readonly int animInfected = Animator.StringToHash("isInfected");
+        
+        protected virtual void Start()
         {
-            
+            mask.SetActive(false);
+            if(isInfected) handleInfection();
         }
 
+        private void Update()
+        {
+            if (isInfected)
+            {
+                infectOthers();
+            }
+        }
+        // Infection behaviours
+        protected override void handleInfection()
+        {
+            mSpriteRenderer.color = Color.green;
+        }
+
+// mask behaviours
         public bool maskUp()
         {
             if (!isMasked)
             {
                 isMasked = true;
-                infectionChance -= 0.5f;
+                mask.SetActive(true);
+                immunity += maskEffect;
+                infectionStrength = 5;
                 Debug.Log("Masking!");
                 return true;
             }
@@ -22,4 +46,5 @@ public class EnemyLogic : MonoBehaviour
             Debug.Log("Already masked");
             return false;
         }
+        
     }
