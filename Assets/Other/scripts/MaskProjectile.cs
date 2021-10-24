@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-    public class MaskProjectile : Projectile
+public class MaskProjectile : Projectile
     {
-        protected override void OnHit(EnemyLogic enemy)
+        protected override bool OnHit(EnemyLogic enemy)
         {
-            enemy.maskUp();
+            return enemy.MaskUp();
         }
         
     }
