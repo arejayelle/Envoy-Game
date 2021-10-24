@@ -2,15 +2,20 @@
 
 public abstract class Infectable: MonoBehaviour
 {
+    [Header("Infectable")]
     // immunity
-    public bool isInfected;
-    public int immunity = 20;
+    [SerializeField]
+    protected bool isInfected;
+    [SerializeField]
+    protected int immunity = 20;
     
     // infection
-    public float infectionRange = 0.7f;
-    [Range(0, 15)]
-    public int infectionStrength = 10;
-    public LayerMask whatToInfect;
+    [SerializeField]
+    protected float infectionRange = 0.7f;
+    [Range(0, 15)] [SerializeField] 
+    protected int infectionStrength = 10;
+    [SerializeField]
+    LayerMask whatToInfect;
     
     public void tickInfection(int risk)
     {
