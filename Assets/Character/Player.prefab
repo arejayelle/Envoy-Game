@@ -158,7 +158,7 @@ MonoBehaviour:
   attackRange: 0.7
   whatToWipe:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!114 &7080330180774388326
 MonoBehaviour:
   m_ObjectHideFlags: 0
