@@ -17,7 +17,7 @@ public class EnemyLogic : Infectable
         protected virtual void Start()
         {
             mask.SetActive(isMasked);
-            if(isMasked) maskUp();
+            if(isMasked) MaskUp();
             if(isInfected) handleInfection();
         }
 
