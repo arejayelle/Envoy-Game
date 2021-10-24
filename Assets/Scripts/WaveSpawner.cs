@@ -12,12 +12,14 @@ public class WaveSpawner : MonoBehaviour
     }
     
     [SerializeField] private Wave[] waves;
+    [SerializeField] private Transform[] spawnPoints;
 
     private int nextWaveIndex = 0;
     
     [SerializeField] float timeBetweenWaves = 5f;
     [SerializeField] float countdown;
-    [SerializeField] private float searchCooldown = 1f;
+    
+    private float searchCooldown = 1f;
     [SerializeField] SpawnState state = SpawnState.COUNTING;
 
     // Start is called before the first frame update
@@ -33,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (!EnemiesAreAlive())
             {
-                Debug.Log("Wave completed");
+                WaveCompleted();
             }
             else
             {
@@ -68,8 +70,8 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(Transform enemy)
     {
-        Debug.Log("SpawnEnemy");
-        Instantiate(enemy, transform.position, transform.rotation);
+        var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
     }
     
     bool EnemiesAreAlive()
