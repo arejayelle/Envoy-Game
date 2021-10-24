@@ -5,20 +5,18 @@ using DefaultNamespace;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Table : MonoBehaviour, IWipeable
+public class Table : Infectable, IWipeable
 {
     
-    private bool mIsDirty = true;
     private bool justCleaned = false;
-
     private Animator anim;
-    public GameObject bloodEffect;
     
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        anim.SetBool("isDirty", mIsDirty);
+        isInfected = true;
+        anim.SetBool("isDirty", isInfected);
     }
 
     // Update is called once per frame
@@ -26,27 +24,30 @@ public class Table : MonoBehaviour, IWipeable
     {
         if (justCleaned)
         {
-            mIsDirty = false;
+            isInfected = false;
             justCleaned = false;
-            anim.SetBool("isDirty", mIsDirty);
+            anim.SetBool("isDirty", isInfected);
 
+        }
+        else if(isInfected)
+        {
+            infectOthers();
         }
 
     }
-
-    public void infect()
-    {
-        mIsDirty = true;
-        anim.SetBool("isDirty", mIsDirty);
-
-    }
+    
     public void Wipe()
     {
-        if (mIsDirty)
+        if (isInfected)
         {
             justCleaned = true;
             anim.SetTrigger("justCleaned");
         }
         
+    }
+
+    protected override void handleInfection()
+    {
+        anim.SetBool("isDirty", isInfected);
     }
 }

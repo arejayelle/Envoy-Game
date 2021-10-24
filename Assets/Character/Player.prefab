@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2108874584684416266}
   - component: {fileID: 6639998365993922106}
   - component: {fileID: 4360969875176141247}
+  - component: {fileID: 7080330180774388326}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -157,7 +158,21 @@ MonoBehaviour:
   attackRange: 0.7
   whatToWipe:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
+--- !u!114 &7080330180774388326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344050037291796823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee4428400da4ef489b0769f1b83458b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mProjectile: {fileID: 4735608227210450708, guid: dc395a8bb89514447a4f9533dff93600, type: 3}
+  shotPoint: {fileID: 3344050038172252839}
 --- !u!1 &3344050037395466108
 GameObject:
   m_ObjectHideFlags: 0

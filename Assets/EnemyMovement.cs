@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCBehaviour : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public float speed = 3f;
     public float distance= 2f;
@@ -28,5 +25,10 @@ public class NPCBehaviour : MonoBehaviour
                 isMovingRight = true;
             }
         }
+    }
+
+    public void Die()
+    {
+        enabled = false;
     }
 }

@@ -29,14 +29,19 @@ public class WipeAttack : MonoBehaviour
     {
         if (cooldownTime <= 0)
         {
-            var isAttacking = Input.GetButton("Fire1");
+            var isAttacking = Input.GetButton("Fire3");
             if (isAttacking)
             {
                 Collider2D[] thingsToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatToWipe);
                 for (int i = 0; i < thingsToWipe.Length; i++)
                 {
-                    var wipeable = thingsToWipe[i].GetComponent<IWipeable>();
-                    wipeable.Wipe();
+                    var thing = thingsToWipe[i];
+                    if (thing.CompareTag("wipeable"))
+                    {
+                        var wipeable = thing.GetComponent<IWipeable>();
+                        wipeable.Wipe();
+                    }
+
                 }
                 
                 mAnimator.SetTrigger("wipe");

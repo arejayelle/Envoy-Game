@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Neutral
+  - MaskedEnemy
+  - wipeable
   layers:
   - Default
   - TransparentFX
@@ -13,10 +16,10 @@ TagManager:
   - Player
   - Water
   - UI
-  - Enemy
-  - Table
-  - wipeable
   - 
+  - 
+  - 
+  - infectable
   - 
   - 
   - 
