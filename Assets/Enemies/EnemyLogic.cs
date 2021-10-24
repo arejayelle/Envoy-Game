@@ -52,9 +52,9 @@ public class EnemyLogic : Infectable
         }
 
 // mask behaviours
-        public void maskUp()
+        public bool MaskUp()
         {
-            if (isMasked || isDead) return;
+            if (isMasked || isDead) return false;
             
             isMasked = true;
             mask.SetActive(true);
@@ -62,7 +62,8 @@ public class EnemyLogic : Infectable
             infectionStrength = 5;
             infectionRange = 0.5f;
             Debug.Log("Masking!");
-            return;
+            
+            return true;
 
         }
         
