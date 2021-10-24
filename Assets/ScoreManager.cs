@@ -9,8 +9,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     
-    [SerializeField] TextMeshPro scoreText;
-    [SerializeField] Text someText;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     private int mScore = 0;
 
@@ -22,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        someText.text = mScore.ToString();
+        scoreText.text = mScore.ToString();
     }
 
     // Update is called once per frame
@@ -34,6 +33,6 @@ public class ScoreManager : MonoBehaviour
     public void GainPoint(int points)
     {
         mScore += points;
-        someText.text = mScore.ToString();
+        scoreText.text = mScore.ToString();
     }
 }
