@@ -44,7 +44,7 @@ public class EnemyLogic : Infectable
             
             // disable script
 
-            transform.GetComponent<NPCBehaviour>().Die();
+            transform.GetComponent<EnemyMovement>().Die();
             transform.GetComponent<Collider2D>().enabled = false;
             isDead = true;
         }
