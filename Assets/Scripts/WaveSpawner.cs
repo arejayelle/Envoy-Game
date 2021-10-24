@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
     private int nextWaveIndex = 0;
     
     [SerializeField] float timeBetweenWaves = 5f;
-    [SerializeField] float countdown;
+    float tillNextWave;
     
     private float searchCooldown = 1f;
     [SerializeField] SpawnState state = SpawnState.COUNTING;
@@ -25,7 +25,7 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        countdown = timeBetweenWaves;
+        tillNextWave = 2f;
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
                 return; 
             }
         }
-        if (countdown <= 0)
+        if (tillNextWave <= 0)
         {
             if (state != SpawnState.SPAWNING)
             {
@@ -51,7 +51,7 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
-            countdown -= Time.deltaTime;
+            tillNextWave -= Time.deltaTime;
         }
     }
 
@@ -92,7 +92,7 @@ public class WaveSpawner : MonoBehaviour
     void WaveCompleted()
     {
         state = SpawnState.COUNTING;
-        countdown = timeBetweenWaves;
+        tillNextWave = timeBetweenWaves;
 
         nextWaveIndex++;   
         
