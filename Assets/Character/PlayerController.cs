@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isFalling;
     private bool isJumping;
+    private bool isCrouching;
 
     // References to Player's components
     public Rigidbody2D rb;
@@ -41,15 +42,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             isJumping = true;
-            // Animator.SetBool("isJumping", isJumping);
-            // Animator.SetTrigger("jump");
-
         }
-        // if (Input.GetButtonDown("Crouch"))
-        // {
-        //     crouch = !crouch;
-        //     Animator.SetBool("isCrouching", crouch);
-        // }
+        if (Input.GetButtonDown("Crouch"))
+        {
+            isCrouching = !isCrouching;
+            Animator.SetBool("isCrouching", isCrouching);
+        }
 
         Animator.SetBool("isGrounded", isGrounded);
         Animator.SetBool("isFalling", isFalling);
