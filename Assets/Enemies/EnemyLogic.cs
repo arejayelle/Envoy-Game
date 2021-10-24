@@ -4,14 +4,15 @@ using Random = UnityEngine.Random;
 
 public class EnemyLogic : Infectable
     {
-        public bool isMasked;
-        public bool isDead = false;
-        public GameObject mask;
-        public int maskEffect = 20;
+        [Header("Masks")]
+        [SerializeField] bool isMasked;
+        [SerializeField] GameObject mask;
+        [SerializeField] int maskEffect = 20;
         
-        public SpriteRenderer bodySpriteRenderer;
-
-        public bool isImmunocompromised = false;
+        [Header("General")]
+        [SerializeField] SpriteRenderer bodySpriteRenderer;
+        [SerializeField] bool isDead = false;
+        [SerializeField] bool isImmunocompromised = false;
         
         protected virtual void Start()
         {

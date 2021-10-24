@@ -6,11 +6,11 @@ public abstract class Infectable: MonoBehaviour
     // immunity
     [SerializeField]
     protected bool isInfected;
-    [SerializeField]
+    [Range(0, 100)] [SerializeField]
     protected int immunity = 20;
     
     // infection
-    [SerializeField]
+    [Range(0, 2)] [SerializeField]
     protected float infectionRange = 0.7f;
     [Range(0, 15)] [SerializeField] 
     protected int infectionStrength = 10;
