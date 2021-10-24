@@ -32,7 +32,6 @@ public class WipeAttack : MonoBehaviour
             var isAttacking = Input.GetButton("Fire1");
             if (isAttacking)
             {
-                // Collider2D[] TablesToWipe = Physics2D.OverlapBox(attackPos.position, attackPos.localScale, 0f);
                 Collider2D[] thingsToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatToWipe);
                 for (int i = 0; i < thingsToWipe.Length; i++)
                 {
@@ -40,7 +39,7 @@ public class WipeAttack : MonoBehaviour
                     wipeable.Wipe();
                 }
                 
-                mAnimator.SetTrigger("WipeAttack");
+                mAnimator.SetTrigger("wipe");
             }
 
             cooldownTime = kWipeAttackCooldown;
