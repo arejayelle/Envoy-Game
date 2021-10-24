@@ -28,7 +28,6 @@ public class Table : MonoBehaviour, IWipeable
         {
             mIsDirty = false;
             justCleaned = false;
-            anim.ResetTrigger("justCleaned");
             anim.SetBool("isDirty", mIsDirty);
 
         }
