@@ -16,6 +16,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private List<Transform> WaveEnemies;
 
+    [SerializeField] private PauseMenu pauseMenu;
+    private int round = 0;
+
     private int mWaveIndex = 0;
     
     [SerializeField] float timeBetweenWaves = 5f;
@@ -122,6 +125,9 @@ public class WaveSpawner : MonoBehaviour
         if (mWaveIndex == waves.Length)
         {
             mWaveIndex = 0;
+
+            round++;
+            pauseMenu.OnRoundEnd(round);
             Debug.Log("Looping");
         }
         initializeWave();
