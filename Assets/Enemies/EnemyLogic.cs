@@ -13,6 +13,8 @@ public class EnemyLogic : Infectable
         [SerializeField] SpriteRenderer bodySpriteRenderer;
         [SerializeField] bool isDead = false;
         [SerializeField] bool isImmunocompromised = false;
+
+        [SerializeField] private bool isKickedOut = false;
         
         protected virtual void Start()
         {
@@ -65,6 +67,11 @@ public class EnemyLogic : Infectable
             
             return true;
 
+        }
+
+        public void Despawn()
+        {
+            Destroy(gameObject);
         }
         
     }
