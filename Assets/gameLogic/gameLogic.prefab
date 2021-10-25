@@ -43,20 +43,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aff497a35863a54fa7cf4c35a6d0de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfEnemies:
+  - {fileID: 2786487824148659541, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
+  - {fileID: 8349147874365005437, guid: 89596fac13c47b34e85a986d724fa117, type: 3}
+  - {fileID: 7210821780036665459, guid: 3f3c31d389472474eb680c1759e3ab1b, type: 3}
+  - {fileID: 6625950021578746185, guid: 107036df10d85c64aa51246fafd85899, type: 3}
+  - {fileID: 854550226472820110, guid: 014d5f591122e4c48a5b094fafd217dc, type: 3}
+  - {fileID: 7933661861459371970, guid: 1db2ef3310cc9804c9989cdf0f2d884c, type: 3}
+  - {fileID: 8340238557179441812, guid: ba53e75367a8245489065a8d859f9b6e, type: 3}
   waves:
   - name: beep
-    enemies:
-    - {fileID: 2786487824148659541, guid: bbe604acd6a21444193d04e0fc11160d, type: 3}
-    - {fileID: 8349147874365005437, guid: 89596fac13c47b34e85a986d724fa117, type: 3}
-    - {fileID: 7210821780036665459, guid: 3f3c31d389472474eb680c1759e3ab1b, type: 3}
-    - {fileID: 7933661861459371970, guid: 1db2ef3310cc9804c9989cdf0f2d884c, type: 3}
+    numEnemies: 04000000020000000100000000000000010000000100000002000000
     count: 8
     spawnRate: 3
+  - name: Mob
+    numEnemies: 0a000000090000000b00000004000000090000000300000005000000
+    count: 8
+    spawnRate: 8
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  WaveEnemies: []
   timeBetweenWaves: 5
-  countdown: 0
   state: 2
