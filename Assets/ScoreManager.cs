@@ -8,10 +8,15 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    
+
     [SerializeField] TextMeshProUGUI scoreText;
 
-    private int mScore = 0;
+    private static int mScore = 0;
+
+    public static int GetScore()
+    {
+        return mScore;
+    }
 
     private void Awake()
     {
