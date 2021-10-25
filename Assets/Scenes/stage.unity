@@ -496,6 +496,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbaecdd90cc9046458cac64146cd078d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &960880088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3945512414610084785, guid: c9164ce29acfa1d44a6e7e65abeb2471, type: 3}
+  m_PrefabInstance: {fileID: 1891015603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1126819549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -861,6 +866,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 89443919011064662, guid: b289a94f6e39e95408697d2c7a5aa2e2, type: 3}
+      propertyPath: scoreCanvas
+      value: 
+      objectReference: {fileID: 960880088}
     - target: {fileID: 3142558598198517932, guid: b289a94f6e39e95408697d2c7a5aa2e2, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
