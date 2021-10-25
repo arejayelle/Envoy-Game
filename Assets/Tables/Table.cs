@@ -15,7 +15,6 @@ public class Table : Infectable, IWipeable
     void Start()
     {
         anim = GetComponent<Animator>();
-        isInfected = true;
         anim.SetBool("isDirty", isInfected);
     }
 
