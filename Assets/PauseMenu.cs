@@ -65,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         scoreCanvas.SetActive(false);
 
         RoundNumberText.text = $"Round {roundNumber} Completed";
-        scoreText.text = ScoreManager.GetScore().ToString();
+        scoreText.text = ScoreManager.instance.GetScore().ToString();
         roundEndCanvas.SetActive(true);
     }
 

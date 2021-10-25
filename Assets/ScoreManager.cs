@@ -11,9 +11,9 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText;
 
-    private static int mScore = 0;
+    private int mScore = 0;
 
-    public static int GetScore()
+    public int GetScore()
     {
         return mScore;
     }
