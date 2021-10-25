@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    
+    public Transform[] typeOfEnemies;
+
     private enum SpawnState{
         SPAWNING,
         WAITING,
@@ -13,8 +14,9 @@ public class WaveSpawner : MonoBehaviour
     
     [SerializeField] private Wave[] waves;
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private List<Transform> WaveEnemies;
 
-    private int nextWaveIndex = 0;
+    private int mWaveIndex = 0;
     
     [SerializeField] float timeBetweenWaves = 5f;
     float tillNextWave;
@@ -26,6 +28,24 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         tillNextWave = 2f;
+        initializeWave();
+    }
+
+    void initializeWave()
+    {
+        var currentWave = waves[mWaveIndex];
+
+        WaveEnemies = new List<Transform>();
+        for (int i = 0; i < typeOfEnemies.Length; i++)
+        {
+            var numOfType = currentWave.numEnemies[i];
+            for (int j = 0; j < numOfType; j++)
+            {
+                WaveEnemies.Add(typeOfEnemies[i]);
+            }
+        }
+
+        currentWave.count = WaveEnemies.Count;
     }
 
     // Update is called once per frame
@@ -46,7 +66,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (state != SpawnState.SPAWNING)
             {
-                StartCoroutine(SpawnWave(waves[nextWaveIndex]));
+                StartCoroutine(SpawnWave(waves[mWaveIndex]));
             }
         }
         else
@@ -61,7 +81,10 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.SPAWNING;
         for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy(wave.enemies[Random.Range(0, wave.enemies.Length)]);
+            var spawnIndex = Random.Range(0, WaveEnemies.Count); // pick random index
+            var toSpawn = WaveEnemies[spawnIndex]; // Get enemy
+            SpawnEnemy(toSpawn); // Spawn
+            WaveEnemies.RemoveAt(spawnIndex); // remove from list
             yield return new WaitForSeconds(1f / wave.spawnRate);
         }
         state = SpawnState.WAITING;
@@ -94,12 +117,13 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.COUNTING;
         tillNextWave = timeBetweenWaves;
 
-        nextWaveIndex++;   
+        mWaveIndex++;   
         
-        if (nextWaveIndex == waves.Length)
+        if (mWaveIndex == waves.Length)
         {
-            nextWaveIndex = 0;
+            mWaveIndex = 0;
             Debug.Log("Looping");
         }
+        initializeWave();
     }
 }
