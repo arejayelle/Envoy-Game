@@ -51,6 +51,13 @@ public class EnemyLogic : Infectable
             transform.GetComponent<EnemyMovement>().enabled = false;
             transform.GetComponent<Collider2D>().enabled = false;
             isDead = true;
+            Invoke("RemoveEvidence", 0.5f);
+
+        }
+
+        void RemoveEvidence()
+        {
+            Destroy(gameObject);
         }
 
 // mask behaviours
