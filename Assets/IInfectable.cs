@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class Infectable: MonoBehaviour
 {
@@ -17,6 +19,9 @@ public abstract class Infectable: MonoBehaviour
     [SerializeField]
     LayerMask whatToInfect;
 
+    [SerializeField] protected float kInfectionCooldown= 5f;
+    protected float infectionTimeLeft=0f;
+
     public void TickInfection(float risk)
     {
         if (isInfected || immunity >= 100) return;
@@ -32,6 +37,19 @@ public abstract class Infectable: MonoBehaviour
 
     protected abstract void HandleInfection();
 
+    protected void SpreadInfection()
+    {
+        if (infectionTimeLeft <= 0)
+        {
+            InfectOthers();
+            infectionTimeLeft = kInfectionCooldown;
+        }
+        else
+        {
+            infectionTimeLeft -= Time.deltaTime;
+        }
+    }
+    
     protected void InfectOthers()
     {
         Collider2D[] thingsToInfect = Physics2D.OverlapCircleAll(transform.position, infectionRange, whatToInfect);

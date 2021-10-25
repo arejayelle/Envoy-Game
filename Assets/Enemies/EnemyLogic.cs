@@ -27,7 +27,7 @@ public class EnemyLogic : Infectable
         {
             if (isInfected)
             {
-                InfectOthers();
+                SpreadInfection();
             }
         }
         // Infection behaviours
