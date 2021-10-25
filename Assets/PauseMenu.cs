@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (TimeManager.GameIsPaused)
+            if (TimeManager.GameIsPaused())
             {
                 Resume();
             }
