@@ -30,7 +30,7 @@ public class Table : Infectable, IWipeable
         }
         else if(isInfected)
         {
-            infectOthers();
+            InfectOthers();
         }
 
     }
@@ -45,7 +45,7 @@ public class Table : Infectable, IWipeable
         
     }
 
-    protected override void handleInfection()
+    protected override void HandleInfection()
     {
         anim.SetBool("isDirty", isInfected);
     }

@@ -12,33 +12,33 @@ public abstract class Infectable: MonoBehaviour
     // infection
     [Range(0, 2)] [SerializeField]
     protected float infectionRange = 0.7f;
-    [Range(0, 15)] [SerializeField] 
-    protected int infectionStrength = 10;
+    [Range(0, 5)] [SerializeField] 
+    protected float infectionBonus = 2;
     [SerializeField]
     LayerMask whatToInfect;
-    
-    public void tickInfection(int risk)
+
+    public void TickInfection(float risk)
     {
         if (isInfected || immunity >= 100) return;
 
-        var randomPull = Random.value * 100 + risk;
+        var randomPull = (Random.value * 100) + risk;
         if (randomPull > immunity)
         {
             isInfected = true;
-            handleInfection();
+            HandleInfection();
         }
 
     }
 
-    protected abstract void handleInfection();
+    protected abstract void HandleInfection();
 
-    protected void infectOthers()
+    protected void InfectOthers()
     {
         Collider2D[] thingsToInfect = Physics2D.OverlapCircleAll(transform.position, infectionRange, whatToInfect);
         for (int i = 0; i < thingsToInfect.Length; i++)
         {
             var infectable = thingsToInfect[i].GetComponent<Infectable>();
-            infectable.tickInfection(infectionStrength);
+            infectable.TickInfection(infectionBonus);
         }
     }
     

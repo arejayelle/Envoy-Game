@@ -20,18 +20,18 @@ public class EnemyLogic : Infectable
         {
             mask.SetActive(isMasked);
             if(isMasked) MaskUp();
-            if(isInfected) handleInfection();
+            if(isInfected) HandleInfection();
         }
 
         private void Update()
         {
             if (isInfected)
             {
-                infectOthers();
+                InfectOthers();
             }
         }
         // Infection behaviours
-        protected override void handleInfection()
+        protected override void HandleInfection()
         {
             if (isImmunocompromised)
             {
@@ -68,7 +68,7 @@ public class EnemyLogic : Infectable
             isMasked = true;
             mask.SetActive(true);
             immunity += maskEffect;
-            infectionStrength = 5;
+            infectionBonus = 5;
             infectionRange = 0.5f;
             Debug.Log("Masking!");
             
