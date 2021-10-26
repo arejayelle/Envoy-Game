@@ -45,6 +45,8 @@ public class SocialDistancing : MonoBehaviour
                 var xForce = (pullRight ? -1 : 1) * pullSpeed;
                 
                 hitInfo.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
+                
+                ScoreManager.instance.GainPoint(5);
                 StartCoroutine(LineUpdater.PullTarget(pulledEnemy.transform));
             }
             else
