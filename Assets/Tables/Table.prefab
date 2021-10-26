@@ -174,9 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInfected: 0
-  immunity: 20
+  immunity: 70
   infectionRange: 0.7
-  infectionStrength: 5
+  infectionBonus: 0
   whatToInfect:
     serializedVersion: 2
     m_Bits: 512

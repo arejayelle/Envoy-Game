@@ -15,8 +15,8 @@ public class Table : Infectable, IWipeable
     void Start()
     {
         anim = GetComponent<Animator>();
-        isInfected = true;
         anim.SetBool("isDirty", isInfected);
+
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class Table : Infectable, IWipeable
         }
         else if(isInfected)
         {
-            infectOthers();
+            SpreadInfection();
         }
 
     }
@@ -46,7 +46,7 @@ public class Table : Infectable, IWipeable
         
     }
 
-    protected override void handleInfection()
+    protected override void HandleInfection()
     {
         anim.SetBool("isDirty", isInfected);
     }

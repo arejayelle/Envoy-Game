@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     // brackeys tutorial: https://youtu.be/JivuXdrIHK0
-    public static bool GameIsPaused;
 
     public GameObject pauseMenuUI;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (GameIsPaused)
+            if (TimeManager.GameIsPaused())
             {
                 Resume();
             }
@@ -27,21 +28,20 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        TimeManager.Pause();
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
     }
     
     public void Resume()
     {
+        Debug.Log("Resume");
+        TimeManager.Resume();
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
     }
 
     public void LoadMenu()
     {
-        Time.timeScale = 1f;
+        TimeManager.Resume();
         SceneManager.LoadScene("MainMenu");
     }
 

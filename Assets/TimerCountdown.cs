@@ -15,10 +15,10 @@ public class TimerCountdown : MonoBehaviour
     {
         timer = RoundTime;
 
-        StartCoroutine(TimerTake());
+        StartCoroutine(tickTime());
     }
     
-    IEnumerator TimerTake()
+    IEnumerator tickTime()
     {
         do
         {

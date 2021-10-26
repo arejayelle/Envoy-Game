@@ -5,7 +5,9 @@ using UnityEngine;
     public class Wave
     {
         public string name;
-        public Transform[] enemies;
+        [Range(0,25)]
+        public int[] numEnemies;
         public int count;
         public float spawnRate;
+        
     }

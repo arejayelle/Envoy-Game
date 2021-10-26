@@ -29,26 +29,25 @@ public abstract class Projectile : MonoBehaviour
             if (OnHit(hitInfo.GetComponent<EnemyLogic>()))
             {
                 ScoreManager.instance.GainPoint(1);
-            }
-            
-            // splash damage
-            Collider2D[] splashZone = Physics2D.OverlapCircleAll(hitInfo.transform.position, doubleRange, whatToMask);
-            var numEnemies = 0;
-            
-            for (int i = 0; i < splashZone.Length ; i++)
-            {
-                var thing = splashZone[i];
-                if (thing.CompareTag("Enemy"))
+                // splash damage
+                Collider2D[] splashZone = Physics2D.OverlapCircleAll(hitInfo.transform.position, doubleRange, whatToMask);
+                var numEnemies = 0;
+                
+                for (int i = 0; i < splashZone.Length ; i++)
                 {
-                    if(thing != hitInfo) // not initial target
+                    var thing = splashZone[i];
+                    if (thing.CompareTag("Enemy"))
                     {
-                        if (OnHit(thing.GetComponent<EnemyLogic>()))
-                            numEnemies++;
+                        if(thing != hitInfo) // not initial target
+                        {
+                            if (OnHit(thing.GetComponent<EnemyLogic>()))
+                                numEnemies++;
+                        }
                     }
-                }
-            } 
-            if(numEnemies > 0) ScoreManager.instance.GainPoint(numEnemies +1);
-            
+                } 
+                if(numEnemies > 0) ScoreManager.instance.GainPoint(numEnemies +1);
+            }
+             
             DestroyProjectile();
         }
     }
