@@ -14,8 +14,6 @@ public class EnemyLogic : Infectable
         [SerializeField] bool isDead = false;
         [SerializeField] bool isImmunocompromised = false;
 
-        [SerializeField] private bool isKickedOut = false;
-        
         protected virtual void Start()
         {
             mask.SetActive(isMasked);
