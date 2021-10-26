@@ -61,7 +61,7 @@ MonoBehaviour:
   - name: Morning
     isActive: 1
     isMob: 0
-    numEnemies: 03000000020000000300000001000000000000000000000000000000
+    numEnemies: 02000000010000000200000001000000000000000100000000000000
   - name: Lunch mob
     isActive: 1
     isMob: 1
@@ -69,19 +69,19 @@ MonoBehaviour:
   - name: After lunch
     isActive: 1
     isMob: 0
-    numEnemies: 03000000020000000300000001000000020000000000000000000000
+    numEnemies: 02000000010000000100000001000000010000000000000000000000
   - name: After school
-    isActive: 1
+    isActive: 0
     isMob: 0
-    numEnemies: 03000000020000000200000001000000020000000000000001000000
+    numEnemies: 01000000010000000200000001000000010000000000000001000000
   - name: Workday Mob
     isActive: 1
     isMob: 1
-    numEnemies: 04000000030000000400000003000000030000000200000003000000
-  - name: After lunch
-    isActive: 1
+    numEnemies: 03000000020000000300000002000000020000000000000000000000
+  - name: After rush
+    isActive: 0
     isMob: 0
-    numEnemies: 03000000020000000100000003000000020000000100000001000000
+    numEnemies: 02000000020000000100000002000000010000000000000000000000
   - name: Closing time
     isActive: 1
     isMob: 0
@@ -91,6 +91,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   WaveEnemies: []
-  timeBetweenWaves: 4
+  timeBetweenWaves: 3
   state: 2
