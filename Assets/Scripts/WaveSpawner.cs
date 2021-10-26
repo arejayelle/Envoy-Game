@@ -148,6 +148,7 @@ public class WaveSpawner : MonoBehaviour
         RoundManager.Instance.NewRound();
         var roundNumber = RoundManager.Instance.RoundNumber;
 
+        RandomizeWaves();
         IncreaseSpeed(roundNumber);
         SetSpawnRate(roundNumber);
         IncreaseEnemies(roundNumber);
@@ -156,6 +157,19 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Looping");
     }
 
+    private void RandomizeWaves()
+    {
+        var morning = Random.Range(0, 1)>0;
+        waves[0].isActive = morning;
+        waves[1].isActive = !morning;
+        var afternoon = Random.Range(0, 1)>0;
+        waves[3].isActive = afternoon;
+        waves[4].isActive = !afternoon;
+        var evening = Random.Range(0, 1)>0;
+        waves[6].isActive = evening;
+        waves[7].isActive = !evening;
+    }
+    
     private void IncreaseSpeed(int roundNumber)
     {
         var zone = (roundNumber / 5f) + 1;
@@ -195,21 +209,14 @@ public class WaveSpawner : MonoBehaviour
                 {
                     if (numEnemies == 0) continue;
 
-                    wave.numEnemies[inE] += roundNumber;
+                    wave.numEnemies[inE] += 1;
                 }
                 // add all types of enemies
                 else if (roundNumber < 10)
                 {
-                    if (numEnemies == 0)
-                    {
-                        wave.numEnemies[inE] += (roundNumber - 10);
-                    }
-                    else
-                    {
-                        wave.numEnemies[inE] += roundNumber;
-                    }
+                    wave.numEnemies[inE] += 1;
                 }
-                // everything
+                // everything is 10
                 else
                 {
                     wave.numEnemies[inE] = 10;
