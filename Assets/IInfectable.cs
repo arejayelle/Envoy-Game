@@ -7,7 +7,7 @@ public abstract class Infectable: MonoBehaviour
     [Header("Infectable")]
     // immunity
     [SerializeField]
-    protected bool isInfected;
+    public bool isInfected;
     [Range(0, 100)] [SerializeField]
     protected int immunity = 20;
     
