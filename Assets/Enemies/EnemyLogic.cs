@@ -16,7 +16,6 @@ public class EnemyLogic : Infectable
 
         
         [Header("Movement")]
-        [SerializeField] Rigidbody2D rb;
         public float speed = 3f;
         [SerializeField] float floorCheckDistance= 2f;
         public bool isMovingRight = true;
