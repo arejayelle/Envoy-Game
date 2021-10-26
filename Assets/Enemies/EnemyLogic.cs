@@ -72,26 +72,8 @@ public class EnemyLogic : Infectable
                 
             bodySpriteRenderer.color = Color.green;
         }
-
-        private void Die()
-        {
-            bodySpriteRenderer.color = Color.black;
-            
-            // disable script
-
-            transform.GetComponent<EnemyMovement>().enabled = false;
-            transform.GetComponent<Collider2D>().enabled = false;
-            isDead = true;
-            Invoke("RemoveEvidence", 0.5f);
-
-        }
-
-        void RemoveEvidence()
-        {
-            Destroy(gameObject);
-        }
-
-// mask behaviours
+        
+        // mask behaviours
         public bool MaskUp()
         {
             if (isMasked || isDead) return false;
@@ -104,6 +86,19 @@ public class EnemyLogic : Infectable
             Debug.Log("Masking!");
             
             return true;
+
+        }
+        // dying and removal
+        private void Die()
+        {
+            bodySpriteRenderer.color = Color.black;
+            
+            // disable script
+
+            transform.GetComponent<EnemyMovement>().enabled = false;
+            transform.GetComponent<Collider2D>().enabled = false;
+            isDead = true;
+            Invoke("Despawn", 0.5f);
 
         }
 
