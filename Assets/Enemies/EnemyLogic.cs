@@ -38,6 +38,7 @@ public class EnemyLogic : Infectable
 
         private void FixedUpdate()
         {
+            if(isDead) return;
             Move();
         }
 
@@ -93,8 +94,6 @@ public class EnemyLogic : Infectable
             bodySpriteRenderer.color = Color.black;
             
             // disable script
-
-            transform.GetComponent<EnemyMovement>().enabled = false;
             transform.GetComponent<Collider2D>().enabled = false;
             isDead = true;
             Invoke("Despawn", 0.5f);
