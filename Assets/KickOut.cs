@@ -10,7 +10,6 @@ public class KickOut : MonoBehaviour
     [SerializeField] float yeetSpeed = 10f;
     [SerializeField] float yForce = 6f;
 
-    public GameObject destroyEffect;
     [SerializeField] private LayerMask whatToPull;
     
 
