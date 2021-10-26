@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7080330180774388326}
   - component: {fileID: 730694998}
   - component: {fileID: 4379075754148292896}
+  - component: {fileID: 642147066}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -145,6 +146,7 @@ MonoBehaviour:
     m_Bits: 503
   rb: {fileID: 3344050037291796811}
   Animator: {fileID: 2108874584684416266}
+  OWPH: {fileID: 642147066}
 --- !u!114 &4360969875176141247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +217,20 @@ MonoBehaviour:
   whatToShoo:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &642147066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344050037291796823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08842851e74245342b776a5a99c9e24b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBoxCollider: {fileID: 3344050037291796808}
+  playerCircleCollider: {fileID: 1482279849844561030}
 --- !u!1 &3344050037395466108
 GameObject:
   m_ObjectHideFlags: 0

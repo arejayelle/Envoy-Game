@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isFalling;
     private bool isJumping;
+    private bool isCrouching;
 
     // References to Player's components
     public Rigidbody2D rb;
     public Animator Animator;
     private Transform mGroundCheck;
+    public OneWayPlatformHandler OWPH;
 
     private bool mIsFacingRight = true;
     
@@ -37,20 +39,30 @@ public class PlayerController : MonoBehaviour
 
         isMoving = Mathf.Abs(Input.GetAxisRaw("Horizontal"))>0.01f ;
         Animator.SetBool("isMoving", isMoving);
+
+        var verticalInput = Input.GetAxisRaw("Vertical");
+        if (verticalInput<0f)
+        {
+            isCrouching = true;
+        }
+        else
+        {
+            isCrouching = false;
+
+        }
         
         if (Input.GetButtonDown("Jump"))
         {
-            isJumping = true;
-            // Animator.SetBool("isJumping", isJumping);
-            // Animator.SetTrigger("jump");
-
+            if (isCrouching)
+            {
+                StartCoroutine(OWPH.DisableCollision());
+            }
+            else
+            {
+                isJumping = true;
+            }
         }
-        // if (Input.GetButtonDown("Crouch"))
-        // {
-        //     crouch = !crouch;
-        //     Animator.SetBool("isCrouching", crouch);
-        // }
-
+        Animator.SetBool("isCrouching", isCrouching);
         Animator.SetBool("isGrounded", isGrounded);
         Animator.SetBool("isFalling", isFalling);
 
@@ -59,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveCharacter(horizontalMove*Time.deltaTime, isJumping);
+        MoveCharacter(horizontalMove*Time.deltaTime, isJumping, isCrouching);
         UpdateFalling();
         UpdateGrounded();
         isJumping = false;
@@ -88,6 +100,8 @@ public class PlayerController : MonoBehaviour
     {
         isFalling = false;
         isJumping = false;
+        isCrouching = false;
+        Animator.SetBool("isCrouching", false);
         Animator.SetBool("isFalling", false);
         Animator.SetBool("isGrounded", true);
     }
@@ -96,31 +110,28 @@ public class PlayerController : MonoBehaviour
     private float mMovementSmoothing = 0.05f;
     private Vector3 mVelocity = Vector3.zero;
     
-    public void MoveCharacter(float move, bool jump)
+    public void MoveCharacter(float move, bool jump, bool crouch)
     {
-        if (true)
-        {
-            var targetVelocity = new Vector2(move * 10f, rb.velocity.y);
-            // smooth movement and apply
-            rb.velocity =
-                Vector3.SmoothDamp(rb.velocity, targetVelocity, ref mVelocity, mMovementSmoothing);
+        var targetVelocity = new Vector2(move * 10f, rb.velocity.y);
+        // smooth movement and apply
+        rb.velocity =
+            Vector3.SmoothDamp(rb.velocity, targetVelocity, ref mVelocity, mMovementSmoothing);
             
-            // Input is moving right and the player is facing left...
-            if (move > 0 && !mIsFacingRight)
-            {
-                Flip();
-            }
-            else if (move < 0 && mIsFacingRight)
-            {
-                Flip();
-            }
-            if (isGrounded && jump)
-            {
-                isGrounded = false;
-                isJumping = true;
-                Animator.SetTrigger("jump");
-                rb.AddForce(new Vector2(0f, mJumpForce), ForceMode2D.Impulse);
-            }
+        // Input is moving right and the player is facing left...
+        if (move > 0 && !mIsFacingRight)
+        {
+            Flip();
+        }
+        else if (move < 0 && mIsFacingRight)
+        {
+            Flip();
+        }
+        if (isGrounded && jump)
+        {
+            isGrounded = false;
+            isJumping = true;
+            Animator.SetTrigger("jump");
+            rb.AddForce(new Vector2(0f, mJumpForce), ForceMode2D.Impulse);
         }
     }
 
