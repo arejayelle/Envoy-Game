@@ -6,11 +6,15 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
 
-    public static RoundManager instance;
+    private static RoundManager instance;
     
     [SerializeField] TextMeshProUGUI RoundText;
 
     private int mRoundNumber = 1;
+    
+    public int RoundNumber => mRoundNumber;
+
+    public static RoundManager Instance => instance;
 
     private void Awake()
     {
@@ -26,6 +30,27 @@ public class RoundManager : MonoBehaviour
     public void NewRound()
     {
         mRoundNumber++;
+        RoundText.enabled = false;
         RoundText.text = $"Round {mRoundNumber}";
+        StartCoroutine(textFlash());
+    }
+
+    private IEnumerator textFlash()
+    {
+        yield return new WaitForSeconds(.3f);
+        RoundText.enabled = true;
+        yield return new WaitForSeconds(.3f);
+        RoundText.enabled = false;
+        yield return new WaitForSeconds(.3f);
+        RoundText.enabled = true;
+        yield return new WaitForSeconds(.3f);
+        RoundText.enabled = false;
+        yield return new WaitForSeconds(.3f);
+        RoundText.enabled = true;
+        yield return new WaitForSeconds(.3f);
+        RoundText.enabled = false;
+        yield return new WaitForSeconds(.3f);
+        RoundText.enabled = true;
+        yield break;
     }
 }
