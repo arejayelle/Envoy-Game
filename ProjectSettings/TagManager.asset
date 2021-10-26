@@ -9,6 +9,7 @@ TagManager:
   - Neutral
   - MaskedEnemy
   - wipeable
+  - OneWay
   layers:
   - Default
   - TransparentFX
