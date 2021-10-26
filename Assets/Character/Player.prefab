@@ -74,7 +74,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3344050037291796823}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 149af8eaf0db55142ab3dd7ca6787c1c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mRunSpeed: 30
-  mJumpForce: 20
+  mJumpForce: 16
   mWhatIsGround:
     serializedVersion: 2
     m_Bits: 503
@@ -210,10 +210,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3344050038172252839}
-  LineUpdater: {fileID: 0}
-  linerenderer: {fileID: 0}
-  pullSpeed: 1
-  yForce: 6
+  LineUpdater: {fileID: 1007116478}
+  linerenderer: {fileID: 1007116472}
+  pullSpeed: 5
+  yForce: 3
   destroyEffect: {fileID: 5823618817497373826, guid: adfe016ab737bf548bd77d4104c7a6fe, type: 3}
   whatToPull:
     serializedVersion: 2
