@@ -9,7 +9,6 @@ public class PauseMenu : MonoBehaviour
     // brackeys tutorial: https://youtu.be/JivuXdrIHK0
 
     public GameObject pauseMenuUI;
-    public GameObject InGameUI;
 
     // Update is called once per frame
     void Update()
@@ -30,7 +29,6 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         TimeManager.Pause();
-        InGameUI.SetActive(false);
         pauseMenuUI.SetActive(true);
     }
     
@@ -38,7 +36,6 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Resume");
         TimeManager.Resume();
-        InGameUI.SetActive(true);
         pauseMenuUI.SetActive(false);
     }
 
