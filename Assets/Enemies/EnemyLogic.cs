@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +14,13 @@ public class EnemyLogic : Infectable
         [SerializeField] bool isDead = false;
         [SerializeField] bool isImmunocompromised = false;
 
+        
+        [Header("Movement")]
+        public float speed = 3f;
+        [SerializeField] float floorCheckDistance= 2f;
+        public bool isMovingRight = true;
+        [SerializeField] Transform GroundDetection;
+
         protected virtual void Start()
         {
             mask.SetActive(isMasked);
@@ -28,6 +35,32 @@ public class EnemyLogic : Infectable
                 SpreadInfection();
             }
         }
+
+        private void FixedUpdate()
+        {
+            if(isDead) return;
+            Move();
+        }
+
+        // movement
+        void Move()
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            // rb.velocity = new Vector2(speed , rb.velocity.y);
+            RaycastHit2D groundInfo = Physics2D.Raycast(GroundDetection.position, Vector2.down, floorCheckDistance);
+            if (groundInfo.collider == false)
+            {
+                Flip();
+            }
+        }
+
+        public void Flip()
+        {
+            transform.eulerAngles = new Vector3(0, isMovingRight?-180:0, 0);
+            isMovingRight = !isMovingRight;
+            // transform.Rotate(0f, 180f, 0f);
+        }
+        
         // Infection behaviours
         protected override void HandleInfection()
         {
@@ -39,26 +72,8 @@ public class EnemyLogic : Infectable
                 
             bodySpriteRenderer.color = Color.green;
         }
-
-        private void Die()
-        {
-            bodySpriteRenderer.color = Color.black;
-            
-            // disable script
-
-            transform.GetComponent<EnemyMovement>().enabled = false;
-            transform.GetComponent<Collider2D>().enabled = false;
-            isDead = true;
-            Invoke("RemoveEvidence", 0.5f);
-
-        }
-
-        void RemoveEvidence()
-        {
-            Destroy(gameObject);
-        }
-
-// mask behaviours
+        
+        // mask behaviours
         public bool MaskUp()
         {
             if (isMasked || isDead) return false;
@@ -71,6 +86,17 @@ public class EnemyLogic : Infectable
             Debug.Log("Masking!");
             
             return true;
+
+        }
+        // dying and removal
+        private void Die()
+        {
+            bodySpriteRenderer.color = Color.black;
+            
+            // disable script
+            transform.GetComponent<Collider2D>().enabled = false;
+            isDead = true;
+            Invoke("Despawn", 0.5f);
 
         }
 

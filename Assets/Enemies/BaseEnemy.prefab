@@ -204,7 +204,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2786487824148659541}
   - component: {fileID: 6567091845835973295}
-  - component: {fileID: 4429615498330373773}
   - component: {fileID: 8908778895913865843}
   - component: {fileID: 6275948368864454591}
   m_Layer: 9
@@ -253,21 +252,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4429615498330373773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8731388218000968651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6913abcdafb1eb746a6631813bf6ccd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  distance: 2
-  GroundDetection: {fileID: 2708943395770892396}
 --- !u!114 &8908778895913865843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,15 +267,22 @@ MonoBehaviour:
   isInfected: 0
   immunity: 20
   infectionRange: 1.5
-  infectionStrength: 15
+  infectionBonus: 2
   whatToInfect:
     serializedVersion: 2
     m_Bits: 512
+  kInfectionCooldown: 5
   isMasked: 0
   mask: {fileID: 5893424754558546911}
   maskEffect: 20
   bodySpriteRenderer: {fileID: 731968204574990728}
+  isDead: 0
   isImmunocompromised: 0
+  rb: {fileID: 6567091845835973295}
+  speed: 3
+  floorCheckDistance: 2
+  isMovingRight: 1
+  GroundDetection: {fileID: 2708943395770892396}
 --- !u!58 &6275948368864454591
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4360969875176141247}
   - component: {fileID: 7080330180774388326}
   - component: {fileID: 730694998}
-  - component: {fileID: 7898194066533338311}
+  - component: {fileID: 4379075754148292896}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -191,13 +191,13 @@ MonoBehaviour:
   firePoint: {fileID: 3344050038172252839}
   LineUpdater: {fileID: 1007116478}
   linerenderer: {fileID: 1007116472}
-  pullSpeed: 6
-  yForce: 3
+  pullSpeed: 12
+  yForce: 6
   destroyEffect: {fileID: 5823618817497373826, guid: adfe016ab737bf548bd77d4104c7a6fe, type: 3}
   whatToPull:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &7898194066533338311
+--- !u!114 &4379075754148292896
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,15 +206,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3344050037291796823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60538b33b64b19e428d2b422f43a9c25, type: 3}
+  m_Script: {fileID: 11500000, guid: cd425f8d4429c544ab434ffcc93f907e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3344050038172252839}
-  LineUpdater: {fileID: 1007116478}
-  linerenderer: {fileID: 1007116472}
-  pullSpeed: 5
-  yForce: 3
-  destroyEffect: {fileID: 5823618817497373826, guid: adfe016ab737bf548bd77d4104c7a6fe, type: 3}
+  yeetSpeed: 15
+  yForce: 6
   whatToPull:
     serializedVersion: 2
     m_Bits: 512
