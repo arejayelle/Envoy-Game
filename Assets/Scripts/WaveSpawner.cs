@@ -16,9 +16,6 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private List<Transform> WaveEnemies;
 
-    [SerializeField] private PauseMenu pauseMenu;
-    private int round = 0;
-
     private int mWaveIndex = 0;
     
     [SerializeField] float timeBetweenWaves = 5f;
@@ -47,8 +44,6 @@ public class WaveSpawner : MonoBehaviour
                 WaveEnemies.Add(typeOfEnemies[i]);
             }
         }
-
-        currentWave.count = WaveEnemies.Count;
     }
 
     // Update is called once per frame
@@ -82,7 +77,7 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave(Wave wave)
     {
         state = SpawnState.SPAWNING;
-        for (int i = 0; i < wave.count; i++)
+        for (int i = 0; i < WaveEnemies.Count; i++)
         {
             var spawnIndex = Random.Range(0, WaveEnemies.Count); // pick random index
             var toSpawn = WaveEnemies[spawnIndex]; // Get enemy
@@ -126,7 +121,6 @@ public class WaveSpawner : MonoBehaviour
         {
             mWaveIndex = 0;
 
-            round++;
             RoundManager.instance.NewRound();
             Debug.Log("Looping");
         }
