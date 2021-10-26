@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = mScore.ToString();
+        scoreText.text = $"Score: {mScore}";
     }
 
     // Update is called once per frame
@@ -38,6 +38,6 @@ public class ScoreManager : MonoBehaviour
     public void GainPoint(int points)
     {
         mScore += points;
-        scoreText.text = mScore.ToString();
+        scoreText.text = $"Score: {mScore}";
     }
 }
