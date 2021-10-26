@@ -51,20 +51,46 @@ MonoBehaviour:
   - {fileID: 854550226472820110, guid: 014d5f591122e4c48a5b094fafd217dc, type: 3}
   - {fileID: 7933661861459371970, guid: 1db2ef3310cc9804c9989cdf0f2d884c, type: 3}
   - {fileID: 8340238557179441812, guid: ba53e75367a8245489065a8d859f9b6e, type: 3}
+  enemySpeed: 3
+  enemySpawnRate: 0.5
   waves:
-  - name: beep
-    numEnemies: 04000000020000000100000000000000010000000100000002000000
-    count: 8
-    spawnRate: 3
-  - name: Mob
-    numEnemies: 0a000000090000000b00000004000000090000000300000005000000
-    count: 8
-    spawnRate: 8
+  - name: doors open
+    isActive: 1
+    isMob: 0
+    numEnemies: 02000000010000000200000000000000000000000000000000000000
+  - name: Morning
+    isActive: 1
+    isMob: 0
+    numEnemies: 03000000020000000300000001000000000000000000000000000000
+  - name: Lunch mob
+    isActive: 1
+    isMob: 1
+    numEnemies: 03000000020000000300000002000000010000000100000002000000
+  - name: After lunch
+    isActive: 1
+    isMob: 0
+    numEnemies: 03000000020000000300000001000000020000000000000000000000
+  - name: After school
+    isActive: 1
+    isMob: 0
+    numEnemies: 03000000020000000200000001000000020000000000000001000000
+  - name: Workday Mob
+    isActive: 1
+    isMob: 1
+    numEnemies: 04000000030000000400000003000000030000000200000003000000
+  - name: After lunch
+    isActive: 1
+    isMob: 0
+    numEnemies: 03000000020000000100000003000000020000000100000001000000
+  - name: Closing time
+    isActive: 1
+    isMob: 0
+    numEnemies: 02000000010000000200000002000000000000000000000000000000
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   WaveEnemies: []
-  timeBetweenWaves: 5
+  timeBetweenWaves: 4
   state: 2
