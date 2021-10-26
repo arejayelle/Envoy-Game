@@ -2,12 +2,10 @@
 using UnityEngine;
 
 [Serializable]
-    public class Wave
-    {
-        public string name;
-        [Range(0,25)]
-        public int[] numEnemies;
-        public int count;
-        public float spawnRate;
-        
-    }
+public class Wave
+{
+    public string name;
+    public bool isActive = true;
+    public bool isMob = false;
+    [Range(0, 10)] public int[] numEnemies;
+}

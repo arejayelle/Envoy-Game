@@ -211,8 +211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3344050038172252839}
   yeetSpeed: 15
-  yForce: 6
-  whatToPull:
+  yForce: 3
+  whatToShoo:
     serializedVersion: 2
     m_Bits: 512
 --- !u!1 &3344050037395466108
