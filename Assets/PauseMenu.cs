@@ -53,15 +53,4 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quitting game");
         Application.Quit();
     }
-
-    public void OnRoundEnd(int roundNumber)
-    {
-        RoundManager.instance.NewRound();
-    }
-
-    public void OnRoundResume()
-    {
-        InGameUI.SetActive(true);
-        TimeManager.Resume();
-    }
 }

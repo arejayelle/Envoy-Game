@@ -127,7 +127,7 @@ public class WaveSpawner : MonoBehaviour
             mWaveIndex = 0;
 
             round++;
-            pauseMenu.OnRoundEnd(round);
+            RoundManager.instance.NewRound();
             Debug.Log("Looping");
         }
         initializeWave();
