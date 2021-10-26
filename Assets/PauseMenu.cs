@@ -10,11 +10,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject scoreCanvas;
-    public GameObject roundEndCanvas;
-    
-    [SerializeField] TextMeshProUGUI scoreText;
-
-    [SerializeField] TextMeshProUGUI RoundNumberText;
 
     // Update is called once per frame
     void Update()
@@ -61,18 +56,12 @@ public class PauseMenu : MonoBehaviour
 
     public void OnRoundEnd(int roundNumber)
     {
-        TimeManager.Pause();
-        scoreCanvas.SetActive(false);
-
-        RoundNumberText.text = $"Round {roundNumber} Completed";
-        scoreText.text = ScoreManager.instance.GetScore().ToString();
-        roundEndCanvas.SetActive(true);
+        RoundManager.instance.NewRound();
     }
 
     public void OnRoundResume()
     {
         scoreCanvas.SetActive(true);
-        roundEndCanvas.SetActive(false);
         TimeManager.Resume();
     }
 }
