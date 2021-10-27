@@ -26,8 +26,11 @@ public class PlayerController : MonoBehaviour
     private Transform mGroundCheck;
     public OneWayPlatformHandler OWPH;
 
+    // components for other stuff
+    public BulletTimeManager btm;
+
     private bool mIsFacingRight = true;
-    
+
     private void Start()
     {
         mGroundCheck = transform.Find("GroundCheck");
@@ -35,22 +38,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal")*mRunSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * mRunSpeed;
 
-        isMoving = Mathf.Abs(Input.GetAxisRaw("Horizontal"))>0.01f ;
+        isMoving = Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.01f;
         Animator.SetBool("isMoving", isMoving);
 
         var verticalInput = Input.GetAxisRaw("Vertical");
-        if (verticalInput<0f)
+        if (verticalInput < 0f)
         {
             isCrouching = true;
         }
         else
         {
             isCrouching = false;
-
         }
-        
+
         if (Input.GetButtonDown("Jump"))
         {
             if (isCrouching)
@@ -62,20 +64,22 @@ public class PlayerController : MonoBehaviour
                 isJumping = true;
             }
         }
+
+        if (Input.GetAxis("BulletTime") > 0.3f)
+            DoBulletTime();
+
         Animator.SetBool("isCrouching", isCrouching);
         Animator.SetBool("isGrounded", isGrounded);
         Animator.SetBool("isFalling", isFalling);
-
     }
 
 
     private void FixedUpdate()
     {
-        MoveCharacter(horizontalMove*Time.deltaTime, isJumping, isCrouching);
+        MoveCharacter(horizontalMove * Time.deltaTime, isJumping, isCrouching);
         UpdateFalling();
         UpdateGrounded();
         isJumping = false;
-
     }
 
     // Lab 3
@@ -85,13 +89,12 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(mGroundCheck.position, kGroundCheckRadius, mWhatIsGround);
-        foreach(Collider2D col in colliders)
+        foreach (Collider2D col in colliders)
         {
-            if(col.gameObject != gameObject)
+            if (col.gameObject != gameObject)
             {
                 isGrounded = true;
-                if(!wasGrounded) OnLand();
-                
+                if (!wasGrounded) OnLand();
             }
         }
     }
@@ -106,17 +109,27 @@ public class PlayerController : MonoBehaviour
         Animator.SetBool("isGrounded", true);
     }
     // Lab 3
-    
+
+    public void DoBulletTime()
+    {
+        if (btm.DoBulletTime()) mRunSpeed = 60;
+    }
+
+    public void OnBulletTimeEnd()
+    {
+        mRunSpeed = 30;
+    }
+
     private float mMovementSmoothing = 0.05f;
     private Vector3 mVelocity = Vector3.zero;
-    
+
     public void MoveCharacter(float move, bool jump, bool crouch)
     {
         var targetVelocity = new Vector2(move * 10f, rb.velocity.y);
         // smooth movement and apply
         rb.velocity =
             Vector3.SmoothDamp(rb.velocity, targetVelocity, ref mVelocity, mMovementSmoothing);
-            
+
         // Input is moving right and the player is facing left...
         if (move > 0 && !mIsFacingRight)
         {
@@ -126,6 +139,7 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+
         if (isGrounded && jump)
         {
             isGrounded = false;
@@ -165,5 +179,4 @@ public class PlayerController : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
 }
