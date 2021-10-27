@@ -1,42 +1,49 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WaveSpawner : MonoBehaviour
 {
     public Transform[] typeOfEnemies;
-
-    [SerializeField] private float enemySpeed = 3f;
+    [ReadOnly] [Tooltip("Set value in EnemyMovement")] 
+    public float enemySpeed = EnemyMovement.BaseSpeed;
     [SerializeField] private float enemySpawnRate = 0.5f;
+    [SerializeField]protected int mWaveIndex = 0;
+    public int WaveIndex => mWaveIndex;
 
+    [SerializeField] float timeBetweenWaves = 5f;
+    [SerializeField] float initalWaitTime = 2f;
+    protected float tillNextWave;
+    
     public enum SpawnState
     {
         SPAWNING,
         WAITING,
         COUNTING
     }
-
     [SerializeField] private Wave[] waves;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private List<Transform> WaveEnemies;
+    [SerializeField] private List<Transform> WaveEnemies= new List<Transform>();
+    [SerializeField] protected List<Transform> DeployedEnemies= new List<Transform>();
 
     private int mWaveIndex = 0;
 
-    [SerializeField] float timeBetweenWaves = 5f;
-    [SerializeField] float initalWaitTime = 2f;
-    float tillNextWave;
-
     private float searchCooldown = 1f;
+    
     [SerializeField] public SpawnState state = SpawnState.COUNTING;
 
     // Start is called before the first frame update
     void Start()
     {
         tillNextWave = initalWaitTime;
-        initializeWave();
+        if (WaveEnemies.Count <= 0) 
+            initializeWave();
     }
 
-    void initializeWave()
+    protected void initializeWave()
     {
         var currentWave = waves[mWaveIndex];
         if (!currentWave.isActive)
@@ -45,6 +52,7 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
+        DeployedEnemies = new List<Transform>();
         WaveEnemies = new List<Transform>();
         for (int i = 0; i < typeOfEnemies.Length; i++)
         {
@@ -54,6 +62,7 @@ public class WaveSpawner : MonoBehaviour
                 WaveEnemies.Add(typeOfEnemies[i]);
             }
         }
+        
     }
 
     // Update is called once per frame
@@ -92,8 +101,9 @@ public class WaveSpawner : MonoBehaviour
         while (WaveEnemies.Count > 0)
         {
             var spawnIndex = Random.Range(0, WaveEnemies.Count); // pick random index
-            var toSpawn = WaveEnemies[spawnIndex]; // Get enemy
+            var toSpawn = WaveEnemies[spawnIndex]; // Get enemy prefab
             SpawnEnemy(toSpawn); // Spawn
+            
             WaveEnemies.RemoveAt(spawnIndex); // remove from list
             var spawnRate = wave.isMob ? enemySpawnRate + 1 : enemySpawnRate;
 
@@ -111,10 +121,11 @@ public class WaveSpawner : MonoBehaviour
         if (spawn != null)
         {
             spawn.speed = enemySpeed;
+            DeployedEnemies.Add(spawn.transform);
         }
     }
 
-    bool EnemiesAreAlive()
+    protected virtual bool EnemiesAreAlive()
     {
         searchCooldown -= Time.deltaTime;
         if (searchCooldown <= 0f)
@@ -129,9 +140,10 @@ public class WaveSpawner : MonoBehaviour
         return true;
     }
 
-    void WaveCompleted()
+    protected virtual void WaveCompleted()
     {
         state = SpawnState.COUNTING;
+        pruneDeployed();
         tillNextWave = timeBetweenWaves;
 
         mWaveIndex++;
@@ -223,6 +235,27 @@ public class WaveSpawner : MonoBehaviour
                     wave.numEnemies[inE] = 10;
                 }
             }
+        }
+    }
+    
+    // bulletTime
+    
+    protected void pruneDeployed()
+    {
+        for (int i = DeployedEnemies.Count - 1; i >= 0; i--)
+        {
+            var deployed = DeployedEnemies[i];
+            if(deployed == null)
+                DeployedEnemies.RemoveAt(i);
+        }
+    }
+    
+    protected virtual void DoBulletTime()
+    {
+        foreach (var enTranform in DeployedEnemies)
+        {
+            var enemy = enTranform.GetComponent<EnemyLogic>();
+            enemy.speed = enemySpeed/2;
         }
     }
 }
