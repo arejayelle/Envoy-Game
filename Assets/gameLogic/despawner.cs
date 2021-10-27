@@ -23,8 +23,17 @@ public class despawner : MonoBehaviour
         if (other.transform.CompareTag("Enemy"))
         {
             var enemy = other.transform.GetComponent<EnemyLogic>();
-                if(enemy!= null)
-                    enemy.Despawn();
+            if (!enemy.WasModified)
+            {
+                HandleUnmodified();
+            }
+            if(enemy!= null)
+                enemy.Despawn();
         }
+    }
+
+    private void HandleUnmodified()
+    {
+        Debug.Log("You forgot me :(");
     }
 }

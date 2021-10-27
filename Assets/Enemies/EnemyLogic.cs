@@ -13,8 +13,14 @@ public class EnemyLogic : Infectable
         [SerializeField] SpriteRenderer bodySpriteRenderer;
         [SerializeField] bool isDead = false;
         [SerializeField] bool isImmunocompromised = false;
+        [SerializeField] bool wasModified = false;
+        public bool WasModified
+        {
+            get => wasModified;
+            set => wasModified = value;
+        }
 
-        
+
         [Header("Movement")]
         public float speed = 3f;
         [SerializeField] float floorCheckDistance= 2f;
@@ -83,8 +89,7 @@ public class EnemyLogic : Infectable
             immunity += maskEffect;
             infectionBonus = 5;
             infectionRange = 0.5f;
-            Debug.Log("Masking!");
-            
+            wasModified = true;
             return true;
 
         }

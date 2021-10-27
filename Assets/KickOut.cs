@@ -34,6 +34,7 @@ public class KickOut : MonoBehaviour
                 var enemy = hitInfo.transform.GetComponent<EnemyLogic>();
                 if (enemy.isInfected)
                 {
+                    enemy.WasModified = true;
                     var fromRight = (enemy.transform.position.x - firePointPosition.x) > 0f;
 
                     if ((fromRight && !enemy.isMovingRight) || // they are on your right and moving left
