@@ -9,7 +9,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float enemySpeed = 3f;
     [SerializeField] private float enemySpawnRate = 0.5f;
 
-    private enum SpawnState
+    public enum SpawnState
     {
         SPAWNING,
         WAITING,
@@ -23,15 +23,16 @@ public class WaveSpawner : MonoBehaviour
     private int mWaveIndex = 0;
 
     [SerializeField] float timeBetweenWaves = 5f;
+    [SerializeField] float initalWaitTime = 2f;
     float tillNextWave;
 
     private float searchCooldown = 1f;
-    [SerializeField] SpawnState state = SpawnState.COUNTING;
+    [SerializeField] public SpawnState state = SpawnState.COUNTING;
 
     // Start is called before the first frame update
     void Start()
     {
-        tillNextWave = 2f;
+        tillNextWave = initalWaitTime;
         initializeWave();
     }
 
