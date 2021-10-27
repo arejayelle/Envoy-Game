@@ -38,10 +38,10 @@ public class GameManager : MonoBehaviour
         var RoundsCompleted = RoundManager.Instance.RoundNumber - 1;
 
 
-        RoundText.text = $"Rounds Completed: {RoundsCompleted}";
-        MaskText.text = $"People Masked: {enemiesMasked}";
-        KickText.text = $"People Kicked out: {enemiesKicked}";
-        WipeText.text = $"Tables Wiped: {tablesWiped}";
+        RoundText.text = $"{RoundsCompleted}";
+        MaskText.text = $"{enemiesMasked}";
+        KickText.text = $"{enemiesKicked}";
+        WipeText.text = $"{tablesWiped}";
     }
 
     public void tableCounter()
