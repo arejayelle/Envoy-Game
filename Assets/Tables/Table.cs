@@ -41,6 +41,7 @@ public class Table : Infectable, IWipeable
         if (isInfected)
         {
             justCleaned = true;
+            GameManager.instance.tableCounter();
             ScoreManager.instance.GainPoint(2);
             anim.SetTrigger("justCleaned");
         }
