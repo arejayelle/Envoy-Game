@@ -14,11 +14,11 @@ public class PopupText : MonoBehaviour
     private Color textColour;
     
     
-    public static PopupText Create(string message)
+    public static PopupText Create(string message, bool isGain = false)
     {
         var ts = Instantiate(GameAssetManager.i.popupText, mPosition.position, Quaternion.identity);
         var pop = ts.GetComponent<PopupText>();
-        pop.SetValue(message);
+        pop.SetValue(message, isGain);
         return pop;
     }
     
@@ -28,9 +28,18 @@ public class PopupText : MonoBehaviour
         scoreText.text = "";
     }
 
-    public void SetValue(string message )
+    public void SetValue(string message, bool isGain)
     {
-        textColour = scoreText.color;
+        if (isGain)
+        {
+            textColour = scoreText.color;
+        }
+        else
+        {
+            textColour = Color.red;
+        }
+        
+        scoreText.color = textColour;
         scoreText.text = message;
     }
 
