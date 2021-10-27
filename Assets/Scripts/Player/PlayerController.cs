@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask mWhatIsGround;
     float horizontalMove = 0f;
 
+    [SerializeField] private bool SpecialMode = false;
 
     private float kGroundCheckRadius = 0.1f;
 
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("BulletTime") > 0.3f)
+        if (SpecialMode && Input.GetAxis("BulletTime") > 0.01f)
             DoBulletTime();
 
         Animator.SetBool("isCrouching", isCrouching);
