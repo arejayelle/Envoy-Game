@@ -155,4 +155,15 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
+    public void Kill()
+    {
+        Animator.SetTrigger("Kill");
+        Invoke("Despawn", 2f);
+    }
+
+    private void Despawn()
+    {
+        Destroy(gameObject);
+    }
+
 }

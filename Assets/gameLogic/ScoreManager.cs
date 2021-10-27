@@ -39,5 +39,6 @@ public class ScoreManager : MonoBehaviour
     {
         mScore += points;
         scoreText.text = $"Score: {mScore}";
+        if (mScore <= -20) StartCoroutine(GameManager.instance.EndGame());
     }
 }
