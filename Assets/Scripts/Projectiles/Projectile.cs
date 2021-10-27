@@ -12,7 +12,7 @@ public abstract class Projectile : MonoBehaviour
     public float doubleRange;
     public LayerMask whatToMask;
 
-
+    protected ScoreType mScoreType;
     public GameObject destroyEffect;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public abstract class Projectile : MonoBehaviour
             // hit the target
             if (OnHit(hitInfo.GetComponent<EnemyLogic>()))
             {
-                ScoreManager.instance.GainPoint(1);
+                ScoreManager.instance.GainPoint(mScoreType);
                 // splash damage
                 Collider2D[] splashZone = Physics2D.OverlapCircleAll(hitInfo.transform.position, doubleRange, whatToMask);
                 var numEnemies = 0;
@@ -45,7 +45,7 @@ public abstract class Projectile : MonoBehaviour
                         }
                     }
                 } 
-                if(numEnemies > 0) ScoreManager.instance.GainPoint(numEnemies +1);
+                if(numEnemies > 0) ScoreManager.instance.GainPoint(mScoreType,numEnemies +1);
             }
              
             DestroyProjectile();

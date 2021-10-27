@@ -47,6 +47,7 @@ public class KickOut : MonoBehaviour
                     var xForce = (fromRight ? 1 : -1) * yeetSpeed;
                     hitInfo.transform.GetComponent<Rigidbody2D>()
                         .AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
+                    ScoreManager.instance.GainPoint(ScoreType.EnemyKicked);
                 }
             }
         }

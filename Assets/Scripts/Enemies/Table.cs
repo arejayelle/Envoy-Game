@@ -42,7 +42,7 @@ public class Table : Infectable, IWipeable
         {
             justCleaned = true;
             GameManager.instance.tableCounter();
-            ScoreManager.instance.GainPoint(2);
+            ScoreManager.instance.GainPoint(ScoreType.TableWiped);
             anim.SetTrigger("justCleaned");
         }
         
@@ -50,7 +50,7 @@ public class Table : Infectable, IWipeable
 
     protected override void HandleInfection()
     {
-        ScoreManager.instance.GainPoint(-1);
+        ScoreManager.instance.GainPoint(ScoreType.TableInfected);
         anim.SetBool("isDirty", isInfected);
     }
 }

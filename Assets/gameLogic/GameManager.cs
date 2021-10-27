@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         player.Kill();
         PopulateLoseScreen();
         yield return new WaitForSeconds(1f);
-        TimeManager.Pause();
+        TimeManager.Instance.Pause();
         loseScreen.SetActive(true);
     }
 
