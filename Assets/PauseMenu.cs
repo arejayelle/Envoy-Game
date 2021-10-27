@@ -44,6 +44,12 @@ public class PauseMenu : MonoBehaviour
         TimeManager.Resume();
         SceneManager.LoadScene("MainMenu");
     }
+    
+    public void RePlayGame()
+    {
+        TimeManager.Resume();
+        SceneManager.LoadScene("Respawn");
+    }
 
     public void QuitGame()
     {
