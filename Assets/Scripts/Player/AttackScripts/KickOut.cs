@@ -17,7 +17,11 @@ public class KickOut : MonoBehaviour
     void Start()
     {
         player = transform.GetComponent<PlayerController>();
+        mAnimator = GetComponent<Animator>();
+
     }
+
+    public Animator mAnimator;
 
     // Update is called once per frame
     void Update()
@@ -66,6 +70,7 @@ public class KickOut : MonoBehaviour
 
         }
         
+        mAnimator.SetTrigger("kick");
         Invoke("RestoreState", .07f);
     }
     
