@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Player;
 using UnityEngine;
 
 public class KickOut : MonoBehaviour
@@ -12,17 +13,26 @@ public class KickOut : MonoBehaviour
 
     [SerializeField] private LayerMask whatToShoo;
 
+    private PlayerController player;
+    void Start()
+    {
+        player = transform.GetComponent<PlayerController>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Shoo"))
         {
-            Shoo();
+            if (player.state == PlayerState.Chilling)
+            {
+                player.state = PlayerState.Kicking;
+                Kick();
+            }
         }
     }
 
-    void Shoo()
+    void Kick()
     {
         var firePointPosition = firePoint.position;
 
@@ -50,9 +60,18 @@ public class KickOut : MonoBehaviour
                     enemy.transform.GetComponent<Rigidbody2D>()
                         .AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
                     ScoreManager.instance.GainPoint(ScoreType.EnemyKicked);
+
                 }
             }
 
         }
+        
+        Invoke("RestoreState", .07f);
+    }
+    
+    void RestoreState()
+    {
+        player.state = PlayerState.Chilling;
+
     }
 }

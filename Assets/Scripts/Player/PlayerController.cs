@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     // components for other stuff
     private bool mIsFacingRight = true;
+
+    public PlayerState state = PlayerState.Chilling;
 
     private void Start()
     {
