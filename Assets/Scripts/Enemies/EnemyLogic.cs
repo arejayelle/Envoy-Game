@@ -36,7 +36,7 @@ public class EnemyLogic : Infectable
                 GameManager.instance.unMask();
                 MaskUp();
             } 
-            if(isInfected) HandleInfection();
+            if(isInfected) initInfection();
         }
 
         private void Update()
@@ -73,6 +73,11 @@ public class EnemyLogic : Infectable
         }
         
         // Infection behaviours
+        protected void initInfection()
+        {
+            bodySpriteRenderer.color = Color.green;
+        }
+        
         protected override void HandleInfection()
         {
             if (isImmunocompromised)
