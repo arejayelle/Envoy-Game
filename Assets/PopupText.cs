@@ -8,7 +8,7 @@ public class PopupText : MonoBehaviour
 {
     [SerializeField] TextMeshPro scoreText;
     [SerializeField] static Transform mPosition;
-    private float textSpeed = 10f;
+    private float textSpeed = 5f;
     private float disappearTime = 1f;
     private float disappearSpeed = 3f;
     private Color textColour;
