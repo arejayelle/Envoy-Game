@@ -9,7 +9,7 @@ public class PopupManager : MonoBehaviour
 
     private void Start()
     {
-        PopupText.SetPosition(UpdateText.transform);
+        PopupText.SetPosition(UpdateText);
     }
     
 }

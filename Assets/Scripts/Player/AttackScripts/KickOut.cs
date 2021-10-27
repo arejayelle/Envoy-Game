@@ -26,12 +26,14 @@ public class KickOut : MonoBehaviour
     {
         var firePointPosition = firePoint.position;
 
-        var hitInfo = Physics2D.Raycast(firePointPosition, firePoint.right, 1f, whatToShoo);
-        if (hitInfo)
+        
+        Collider2D[] thingsToKick = Physics2D.OverlapCircleAll(firePointPosition, 1f, whatToShoo);
+        for (int i = 0; i < thingsToKick.Length; i++)
         {
-            if (hitInfo.transform.CompareTag("Enemy"))
+            var kickable = thingsToKick[i];
+            if (kickable.CompareTag("Enemy"))
             {
-                var enemy = hitInfo.transform.GetComponent<EnemyLogic>();
+                var enemy = kickable.transform.GetComponent<EnemyLogic>();
                 if (enemy.isInfected)
                 {
                     enemy.WasModified = true;
@@ -45,11 +47,12 @@ public class KickOut : MonoBehaviour
                     }
 
                     var xForce = (fromRight ? 1 : -1) * yeetSpeed;
-                    hitInfo.transform.GetComponent<Rigidbody2D>()
+                    enemy.transform.GetComponent<Rigidbody2D>()
                         .AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
                     ScoreManager.instance.GainPoint(ScoreType.EnemyKicked);
                 }
             }
+
         }
     }
 }

@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 8731388218000968651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 1184832794721676310}
   - {fileID: 6800726984008817692}
@@ -265,20 +265,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInfected: 0
-  immunity: 20
-  infectionRange: 1.5
-  infectionBonus: 2
+  immunity: 30
+  infectionRange: 1.3
+  infectionBonus: 3.5
   whatToInfect:
     serializedVersion: 2
     m_Bits: 512
-  kInfectionCooldown: 5
+  kInfectionCooldown: 1.5
   isMasked: 0
   mask: {fileID: 5893424754558546911}
   maskEffect: 20
   bodySpriteRenderer: {fileID: 731968204574990728}
   isDead: 0
   isImmunocompromised: 0
-  rb: {fileID: 6567091845835973295}
+  wasModified: 0
   speed: 3
   floorCheckDistance: 2
   isMovingRight: 1

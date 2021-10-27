@@ -29,16 +29,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private List<Transform> WaveEnemies= new List<Transform>();
     [SerializeField] protected List<Transform> DeployedEnemies= new List<Transform>();
 
-    private WaveTextUpdater mWaveTextTextUpdater;
-
     private float searchCooldown = 1f;
     
     [SerializeField] public SpawnState state = SpawnState.COUNTING;
-
-    private void Awake()
-    {
-        mWaveTextTextUpdater = transform.GetComponent<WaveTextUpdater>();
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -152,7 +145,6 @@ public class WaveSpawner : MonoBehaviour
         tillNextWave = timeBetweenWaves;
 
         mWaveIndex++;
-        mWaveTextTextUpdater.UpdateText();
         if (mWaveIndex == waves.Length)
         {
             initNewRound();
