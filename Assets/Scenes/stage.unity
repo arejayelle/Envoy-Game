@@ -164,6 +164,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &106210509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8538290751204685997, guid: 86b05eb52b5d5eb4d8341e7546eaddd8, type: 3}
+  m_PrefabInstance: {fileID: 8538290750969179506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &106210511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106210509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd6c1da0c0c2a14b9ed5b3d905fc954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveText: {fileID: 967645543}
 --- !u!1 &121022283
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,33 +280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowDownFactor: 0.05
   slowDownLength: 3
-  OnTimeRestore:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4242729847828623201}
-        m_TargetAssemblyTypeName: BulletTimeManager, Assembly-CSharp
-        m_MethodName: OnBulletTimeEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1274796260}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnBulletTimeEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &134181533
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +381,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8538290751204685970, guid: 86b05eb52b5d5eb4d8341e7546eaddd8, type: 3}
   m_PrefabInstance: {fileID: 8538290750969179506}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 106210509}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7aff497a35863a54fa7cf4c35a6d0de9, type: 3}
@@ -601,6 +592,17 @@ PrefabInstance:
       objectReference: {fileID: 1274796255}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f15539ac62f3e5a4f80591034cf30553, type: 3}
+--- !u!114 &967645543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6544464862433321202, guid: 81bab3a3a4ca309428cbcf4f5e5b340e, type: 3}
+  m_PrefabInstance: {fileID: 6544464861552738316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1042178071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,38 +1162,38 @@ PrefabInstance:
       propertyPath: RegularSpawner
       value: 
       objectReference: {fileID: 396454981}
+    - target: {fileID: 4242729847828623202, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
+      propertyPath: spawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 634036372}
+    - target: {fileID: 4242729847828623202, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
+      propertyPath: spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1808981782}
+    - target: {fileID: 4242729847828623202, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
+      propertyPath: spawnPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1813135357}
+    - target: {fileID: 4242729847828623202, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
+      propertyPath: spawnPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1211949676}
+    - target: {fileID: 4242729847828623202, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
+      propertyPath: spawnPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 134181534}
+    - target: {fileID: 4242729847828623202, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
+      propertyPath: spawnPoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 1485972561}
+    - target: {fileID: 4242729847828623202, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
+      propertyPath: OnBulletTimeEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1274796260}
     - target: {fileID: 7259668251916105095, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
       propertyPath: m_Name
       value: BulletTimeSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 7259668251916105144, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
-      propertyPath: spawnPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 634036372}
-    - target: {fileID: 7259668251916105144, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
-      propertyPath: spawnPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1808981782}
-    - target: {fileID: 7259668251916105144, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
-      propertyPath: spawnPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1813135357}
-    - target: {fileID: 7259668251916105144, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
-      propertyPath: spawnPoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1211949676}
-    - target: {fileID: 7259668251916105144, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
-      propertyPath: spawnPoints.Array.data[4]
-      value: 
-      objectReference: {fileID: 134181534}
-    - target: {fileID: 7259668251916105144, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
-      propertyPath: spawnPoints.Array.data[5]
-      value: 
-      objectReference: {fileID: 1485972561}
-    - target: {fileID: 7259668251916105144, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
-      propertyPath: spawnPoints.Array.data[6]
-      value: 
-      objectReference: {fileID: 1476264192}
     - target: {fileID: 7259668251916105145, guid: 3fd9cb67ec3bc9a45a4f1026a89e5199, type: 3}
       propertyPath: m_RootOrder
       value: 3

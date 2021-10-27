@@ -117,5 +117,5 @@ public class EnemyLogic : Infectable
         {
             Destroy(gameObject);
         }
-        
+
     }
