@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,16 +7,17 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance;
 
-    private static bool _gameIsPaused;
-    private static bool _gameIsBulletTime = false;
+    private bool mGameIsPaused;
+    private bool mGameIsBulletTime = false;
+    public  bool IsBulletTime => mGameIsBulletTime;
 
-    private float prevTimeScale = 0f;
-    private float prevDeltaTime = 0f;
+    private float mPrevTimeScale = 0f;
+    private float mPrevDeltaTime = 0f;
     [SerializeField] private float slowDownFactor = 0.5f;
     [SerializeField] private float slowDownLength = 3f;
     
 
-    public UnityEvent OnTimeRestore;
+    // public UnityEvent OnBulletTimeEnd;
 
     private void Awake()
     {
@@ -25,46 +26,49 @@ public class TimeManager : MonoBehaviour
 
     public bool GameIsPaused()
     {
-        return _gameIsPaused;
+        return mGameIsPaused;
     }
 
     public void Pause()
     {
-        prevTimeScale = Time.timeScale;
+        mPrevTimeScale = Time.timeScale;
         Time.timeScale = 0f;
-        _gameIsPaused = true;
+        mGameIsPaused = true;
     }
 
     public void Resume()
     {
-        Time.timeScale = prevTimeScale;
-        prevTimeScale = 0f;
-        _gameIsPaused = false;
+        Time.timeScale = mPrevTimeScale;
+        mPrevTimeScale = 0f;
+        mGameIsPaused = false;
+    }
+
+    public void Reset()
+    {
+        Time.timeScale = 1f;
+        mPrevTimeScale = 0f;
+        mGameIsPaused = false;
+        mGameIsBulletTime = false;
     }
 
     public void Update()
     {
-        if (_gameIsBulletTime)
-        {
-            // restore time
-            Time.timeScale += (1f / slowDownLength) * Time.deltaTime; // 3 dialated time seconds
-            if (Time.timeScale >= 1)
-            {
-                Debug.Log("TImeRestore");
-                Time.fixedDeltaTime = prevDeltaTime;
-                Time.timeScale = 1f;
-                _gameIsBulletTime = false;
-                OnTimeRestore.Invoke();
-            }
-        }
     }
 
+    public void BulletTimeEnd()
+    {
+        // Debug.Log("TImeRestore");
+        // Time.fixedDeltaTime = prevDeltaTime;
+        // Time.timeScale = 1f;
+        mGameIsBulletTime = false;
+        // OnBulletTimeEnd.Invoke();
+    }
     public void BulletTime()
     {
-        if (_gameIsBulletTime) return;
-        _gameIsBulletTime = true;
-        Time.timeScale = slowDownFactor;
-        prevDeltaTime = Time.fixedDeltaTime;
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        if (mGameIsBulletTime) return;
+        mGameIsBulletTime = true;
+        // Time.timeScale = slowDownFactor;
+        // prevDeltaTime = Time.fixedDeltaTime;
+        // Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 }
