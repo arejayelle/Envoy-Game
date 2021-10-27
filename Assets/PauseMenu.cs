@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (TimeManager.GameIsPaused())
+            if (TimeManager.Instance.GameIsPaused())
             {
                 Resume();
             }
@@ -28,26 +28,26 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
-        TimeManager.Pause();
+        TimeManager.Instance.Pause();
         pauseMenuUI.SetActive(true);
     }
     
     public void Resume()
     {
         Debug.Log("Resume");
-        TimeManager.Resume();
+        TimeManager.Instance.Resume();
         pauseMenuUI.SetActive(false);
     }
 
     public void LoadMenu()
     {
-        TimeManager.Resume();
+        TimeManager.Instance.Resume();
         SceneManager.LoadScene("MainMenu");
     }
     
     public void RePlayGame()
     {
-        TimeManager.Resume();
+        TimeManager.Instance.Resume();
         SceneManager.LoadScene("Respawn");
     }
 
