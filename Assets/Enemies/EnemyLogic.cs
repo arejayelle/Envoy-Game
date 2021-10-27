@@ -33,6 +33,7 @@ public class EnemyLogic : Infectable
             if (isMasked)
             {
                 isMasked = false;
+                GameManager.instance.unMask();
                 MaskUp();
             } 
             if(isInfected) HandleInfection();
@@ -90,10 +91,13 @@ public class EnemyLogic : Infectable
             
             isMasked = true;
             mask.SetActive(true);
+            
             immunity += maskEffect;
             infectionBonus = 5;
             infectionRange = 0.5f;
+            
             wasModified = true;
+            GameManager.instance.maskCounter();
             return true;
 
         }
