@@ -11,6 +11,7 @@ public enum ScoreType
     TableWiped,
     TableInfected,
     SocialDistancing,
+    MissedOut
 }
 
 public class ScoreManager : MonoBehaviour
@@ -40,7 +41,16 @@ public class ScoreManager : MonoBehaviour
 
     public void GainPoint(ScoreType type, int points =0)
     {
-        mScore += getPoints(type, points);
+        
+        if (TimeManager.Instance.IsBulletTime)
+        {
+            mScore += getBulletTimePoints(type, points);
+
+        }
+        else
+        {
+            mScore += getPoints(type, points);
+        }
         scoreText.text = $"Score: {mScore}";
         if (mScore <= -20) StartCoroutine(GameManager.instance.EndGame());
     }
@@ -66,6 +76,29 @@ public class ScoreManager : MonoBehaviour
                 
                 case ScoreType.SocialDistancing:
                     return 5;
+                default:
+                    return 0;
+            
+        }
+    }
+    int getBulletTimePoints(ScoreType type,int points)
+    {
+        switch (type)
+        {
+                case ScoreType.EnemyMasked:
+                    if (points == 0) return 1;
+                    return points-1; // no bonus point in bulletTime
+                case ScoreType.EnemyKicked:
+                case ScoreType.TableWiped:
+                    return 1;
+                
+                
+                case ScoreType.EnemyInfected:
+                case ScoreType.EnemyDied:
+                case ScoreType.TableInfected:
+                case ScoreType.MissedOut:
+                    return -2;
+                    
                 default:
                     return 0;
             

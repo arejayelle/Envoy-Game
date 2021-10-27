@@ -34,6 +34,6 @@ public class despawner : MonoBehaviour
 
     private void HandleUnmodified()
     {
-        Debug.Log("You forgot me :(");
+        ScoreManager.instance.GainPoint(ScoreType.MissedOut);
     }
 }
