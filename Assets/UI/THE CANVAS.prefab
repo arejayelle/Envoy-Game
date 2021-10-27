@@ -1481,6 +1481,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 6544464863173600527}
+  pauseFirstButton: {fileID: 6544464861285127757}
+  optionsFirstButton: {fileID: 0}
+  optionsClosedFirstButton: {fileID: 0}
+  loseFirstButton: {fileID: 3608382438552222249}
 --- !u!114 &6544464861548075160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2793,6 +2797,11 @@ PrefabInstance:
 --- !u!224 &3608382438552222250 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6938132436075489274, guid: 9c156ae4c86b4cd4d92b728e7787d735, type: 3}
+  m_PrefabInstance: {fileID: 5934264389565455824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3608382438552222249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6938132436075489273, guid: 9c156ae4c86b4cd4d92b728e7787d735, type: 3}
   m_PrefabInstance: {fileID: 5934264389565455824}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6544464862000388191
