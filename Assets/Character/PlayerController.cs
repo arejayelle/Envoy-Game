@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     public OneWayPlatformHandler OWPH;
 
     // components for other stuff
-    public BulletTimeManager btm;
-
     private bool mIsFacingRight = true;
 
     private void Start()
@@ -112,10 +110,10 @@ public class PlayerController : MonoBehaviour
 
     public void DoBulletTime()
     {
-        if (btm.DoBulletTime()) mRunSpeed = 60;
+        if (BulletTimeManager.instance.DoBulletTime()) mRunSpeed = 60;
     }
 
-    public void OnBulletTimeEnd()
+    public void bulletTimeEnd()
     {
         mRunSpeed = 30;
     }
