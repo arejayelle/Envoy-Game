@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviour
     private float kGroundCheckRadius = 0.1f;
 
     // Booleans used to coordinate with the animator's state machine
-    private bool isMoving;
-    private bool isGrounded;
-    private bool isFalling;
-    private bool isJumping;
-    private bool isCrouching;
+    public bool isMoving;
+    public bool isGrounded;
+    public bool isFalling;
+    public bool isJumping;
+    public bool isCrouching;
 
     // References to Player's components
     public Rigidbody2D rb;
