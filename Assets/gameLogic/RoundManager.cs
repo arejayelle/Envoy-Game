@@ -10,7 +10,7 @@ public class RoundManager : MonoBehaviour
     
     [SerializeField] TextMeshProUGUI RoundText;
 
-    private int mRoundNumber = 1;
+    [SerializeField] int mRoundNumber = 1;
     
     public int RoundNumber => mRoundNumber;
 
@@ -35,7 +35,7 @@ public class RoundManager : MonoBehaviour
         StartCoroutine(textFlash());
     }
 
-    private IEnumerator textFlash()
+    public IEnumerator textFlash()
     {
         yield return new WaitForSeconds(.3f);
         RoundText.enabled = true;
