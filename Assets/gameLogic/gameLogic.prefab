@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8538290751204685971}
   - component: {fileID: 8538290751204685970}
+  - component: {fileID: 106210512}
   m_Layer: 0
   m_Name: gameLogic
   m_TagString: Untagged
@@ -53,6 +54,9 @@ MonoBehaviour:
   - {fileID: 8340238557179441812, guid: ba53e75367a8245489065a8d859f9b6e, type: 3}
   enemySpeed: 3
   enemySpawnRate: 0.5
+  mWaveIndex: 0
+  timeBetweenWaves: 3
+  initalWaitTime: 2
   waves:
   - name: doors open
     isActive: 1
@@ -93,6 +97,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   WaveEnemies: []
-  timeBetweenWaves: 3
+  DeployedEnemies: []
   state: 2
+--- !u!114 &106210512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538290751204685997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b008afac5f0d7469f4764d873e24fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupText: {fileID: 3996833747412577392, guid: a4247f1b40a4a654a9e4cfd0b3e2b01f, type: 3}
