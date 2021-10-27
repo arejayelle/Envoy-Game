@@ -80,7 +80,7 @@ public class EnemyLogic : Infectable
                 Die();
                 return;
             }
-            ScoreManager.instance.GainPoint(-1);
+            ScoreManager.instance.GainPoint(ScoreType.EnemyInfected);
             bodySpriteRenderer.color = Color.green;
         }
         
@@ -105,7 +105,7 @@ public class EnemyLogic : Infectable
         private void Die()
         {
             bodySpriteRenderer.color = Color.black;
-            ScoreManager.instance.GainPoint(-5);
+            ScoreManager.instance.GainPoint(ScoreType.EnemyDied);
             // disable script
             transform.GetComponent<Collider2D>().enabled = false;
             isDead = true;
