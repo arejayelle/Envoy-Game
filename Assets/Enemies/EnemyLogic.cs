@@ -30,7 +30,11 @@ public class EnemyLogic : Infectable
         protected virtual void Start()
         {
             mask.SetActive(isMasked);
-            if(isMasked) MaskUp();
+            if (isMasked)
+            {
+                isMasked = false;
+                MaskUp();
+            } 
             if(isInfected) HandleInfection();
         }
 
