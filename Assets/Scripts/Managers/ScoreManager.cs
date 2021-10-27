@@ -60,21 +60,34 @@ public class ScoreManager : MonoBehaviour
         switch (type)
         {
                 case ScoreType.EnemyMasked:
-                    if (points == 0) return 1;
+                    if (points == 0)
+                    {
+                        PopupText.Create($"Enemy Masked! +1");
+                        return 1;
+                    }
+
+                    PopupText.Create($"Multi-Mask bonus! +{points}");
                     return points;
+                
                 case ScoreType.EnemyKicked:
+                    PopupText.Create($"Kicked Out! +1");
                     return 1;
                 case ScoreType.EnemyInfected:
+                    PopupText.Create($"Person Infected! -2");
                     return -2;
                 case ScoreType.EnemyDied:
+                    PopupText.Create($"Person Died! -5");
                     return -5;
                 
                 case ScoreType.TableWiped:
+                    PopupText.Create($"Table wiped! +2");
                     return 2;
                 case ScoreType.TableInfected:
+                    PopupText.Create($"Table Infected! -1");
                     return -1;
                 
                 case ScoreType.SocialDistancing:
+                    PopupText.Create($"Social Distancing Bonus! +5");
                     return 5;
                 default:
                     return 0;
