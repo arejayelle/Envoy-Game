@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,15 +11,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask mWhatIsGround;
     float horizontalMove = 0f;
 
+    [SerializeField] private bool SpecialMode = false;
 
     private float kGroundCheckRadius = 0.1f;
 
     // Booleans used to coordinate with the animator's state machine
-    private bool isMoving;
-    private bool isGrounded;
-    private bool isFalling;
-    private bool isJumping;
-    private bool isCrouching;
+    public bool isMoving;
+    public bool isGrounded;
+    public bool isFalling;
+    public bool isJumping;
+    public bool isCrouching;
 
     // References to Player's components
     public Rigidbody2D rb;
@@ -28,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     // components for other stuff
     private bool mIsFacingRight = true;
+
+    public PlayerState state = PlayerState.Chilling;
 
     private void Start()
     {
@@ -63,7 +67,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("BulletTime") > 0.3f)
+        if (SpecialMode && Input.GetAxis("BulletTime") > 0.01f)
             DoBulletTime();
 
         Animator.SetBool("isCrouching", isCrouching);

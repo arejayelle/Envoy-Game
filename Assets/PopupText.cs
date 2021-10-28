@@ -16,7 +16,7 @@ public class PopupText : MonoBehaviour
     
     public static PopupText Create(string message, bool isGain = false)
     {
-        var ts = Instantiate(GameAssetManager.i.popupText, mPosition.position, Quaternion.identity);
+        var ts = Instantiate(GameAssetManager.i.popupText, Vector3.up, Quaternion.identity);
         var pop = ts.GetComponent<PopupText>();
         pop.SetValue(message, isGain);
         return pop;

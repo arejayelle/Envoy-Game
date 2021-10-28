@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,11 +18,13 @@ public class WipeAttack : MonoBehaviour
     public float attackRange;
 
     public LayerMask whatToWipe;
+    private PlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {
         mAnimator = GetComponent<Animator>();
-
+        player = transform.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -32,19 +35,13 @@ public class WipeAttack : MonoBehaviour
             var isAttacking = Input.GetButton("Fire3");
             if (isAttacking)
             {
-                Collider2D[] thingsToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatToWipe);
-                for (int i = 0; i < thingsToWipe.Length; i++)
+                if (player.state == PlayerState.Chilling)
                 {
-                    var thing = thingsToWipe[i];
-                    if (thing.CompareTag("wipeable"))
-                    {
-                        var wipeable = thing.GetComponent<IWipeable>();
-                        wipeable.Wipe();
-                    }
-
+                    player.state = PlayerState.Wiping;
+                    Wipe();
+                    
                 }
                 
-                mAnimator.SetTrigger("wipe");
             }
 
             cooldownTime = kWipeAttackCooldown;
@@ -53,6 +50,29 @@ public class WipeAttack : MonoBehaviour
         {
             cooldownTime -= Time.deltaTime;
         }
+
+    }
+
+    void Wipe()
+    {
+        Collider2D[] thingsToWipe = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatToWipe);
+        for (int i = 0; i < thingsToWipe.Length; i++)
+        {
+            var thing = thingsToWipe[i];
+            if (thing.CompareTag("wipeable"))
+            {
+                var wipeable = thing.GetComponent<IWipeable>();
+                wipeable.Wipe();
+            }
+
+        }
+        mAnimator.SetTrigger("wipe");
+        Invoke("RestoreState", .1f);
+    }
+    
+    void RestoreState()
+    {
+        player.state = PlayerState.Chilling;
 
     }
 

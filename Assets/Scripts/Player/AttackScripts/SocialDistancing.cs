@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Player;
 using UnityEngine;
 
 public class SocialDistancing : MonoBehaviour
@@ -16,9 +17,11 @@ public class SocialDistancing : MonoBehaviour
     public GameObject destroyEffect;
     [SerializeField] private LayerMask whatToPull;
 
+    private PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
+        player = transform.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -26,7 +29,11 @@ public class SocialDistancing : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            Shoot();
+            if (player.state == PlayerState.Chilling)
+            {
+                player.state = PlayerState.Distancing;
+                Shoot();
+            }
         }
     }
 
@@ -58,6 +65,12 @@ public class SocialDistancing : MonoBehaviour
         {
             StartCoroutine(LineUpdater.PullNothing(firePointPosition + firePoint.right * 50));
         }
+
+        Invoke("RestoreState", .07f);
+    }
+    void RestoreState()
+    {
+        player.state = PlayerState.Chilling;
 
     }
 }
